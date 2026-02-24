@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martinelle Imóveis</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="icon" href="favicon.png?v=2" type="image/png">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#ffffff;
+    color:#1a1a1a;
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    position:absolute;
+    width:100%;
+    padding:30px 8%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+}
+
+.logo{
+    position:relative;
+    top:30px;   
+    height:85px;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* IMAGEM DE FUNDO COM ZOOM CORRIGIDO */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('mart-hero.jpg') center center / cover no-repeat;
+    animation:zoomHero 20s ease-in-out infinite alternate;
+    z-index:0;
+}
+
+/* MÁSCARA CORRIGIDA */
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65));
+    z-index:1;
+}
+
+/* CONTEÚDO SOBREPOSTO */
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    padding:20px;
+}
+
+.hero h1{
+    font-family:'Playfair Display', serif;
+    font-size:48px;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:24px;
+    font-weight:300;
+}
+
+/* ANIMAÇÃO */
+@keyframes zoomHero{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+/* SEÇÕES */
+.section{
+    padding:120px 10%;
+}
+
+.section-dark{
+    background:#f4f7fc;
+}
+
+.section h2{
+    font-family:'Playfair Display', serif;
+    font-size:36px;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+/* VIDEO */
+.video-container{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+    max-width:1000px;
+    margin:50px auto 0 auto;
+    border-radius:12px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.video-container iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+    margin-top:50px;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#1D67CD;
+}
+
+/* DESTAQUE */
+.highlight{
+    background:#1D67CD;
+    color:white;
+    text-align:center;
+    padding:100px 10%;
+    font-size:28px;
+    font-weight:300;
+}
+
+/* CTA */
+.cta{
+    background:#1D67CD;
+    text-align:center;
+    padding:100px 10%;
+}
+
+.cta h2{
+    font-family:'Playfair Display', serif;
+    font-size:34px;
+    max-width:900px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:48px;
+}
+
+.btn-primary{
+    background:#3ecf2d;
+    color:white;
+    padding:18px 70px;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:500;
+    font-size:20px;
+    letter-spacing:1px;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.btn-primary:hover{
+    background:#000000;
+}
+
+/* FOOTER */
+footer{
+    background:#ffffff;
+    color:black;
+    text-align:center;
+    padding:30px;
+    font-size:14px;
+    padding-bottom:180px;
+
+}
+
+/* MART FLUTUANTE */
+.mart-container{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    z-index:9999;
+}
+
+.mart-bubble{
+    position:absolute;
+    bottom:115px;
+    right:0;
+    background:white;
+    color:#1D67CD;
+    padding:10px 18px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:500;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    animation:fadeInBubble 1s ease forwards, pulseBubble 3s infinite;
+    white-space:nowrap;
+}
+
+.mart-bubble::after{
+    content:"";
+    position:absolute;
+    bottom:-8px;
+    right:35px;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-top:8px solid white;
+}
+
+.mart-float{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    animation:floatMart 3s ease-in-out infinite;
+    transition:0.3s;
+    display:block;
+}
+
+.mart-float img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.mart-float:hover{
+    transform:scale(1.1);
+}
+
+/* RESPONSIVIDADE */
+@media(max-width:1024px){
+
+    header{
+        padding:20px 5%;
+    }
+
+    .logo{
+        height:110px;
+        top:20px;
+    }
+
+    .hero{
+        height:auto;
+        min-height:90vh;
+        padding:120px 20px 80px 20px;
+    }
+
+    .hero h1{
+        font-size:36px;
+        line-height:1.2;
+    }
+
+    .hero p{
+        font-size:28px;
+        margin-top:15px;
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:15px 5%;
+    }
+
+    .logo{
+        height:80px;
+        top:35px;
+    }
+
+    .hero{
+        padding:140px 20px 80px 20px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:28px;
+    }
+}
+
+@media(max-width:480px){
+
+    .logo{
+        height:65px;
+        top:50px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:24px;
+    }
+}
+
+.whatsapp-link {
+  color: #25D366;
+  text-decoration: none;
+  font-size: 16px;
+}
+.whatsapp-link:hover {
+  color: #128C7E;
+}
+
+.blog-link {
+  color: #1D67CD;
+  text-decoration: none;
+  font-size: 16px;
+}
+.blog-link:hover {
+  color: #128C7E;
+}
+
+.botao-share {
+    background-color: #1D67CD; /* Verde estilo WhatsApp */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.botao-share:hover {
+    background-color: #128c7e;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo-azul.jpg" class="logo">
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Análise Gratuita de Perfil</h1>
+        <p>
+            Direcionamento inteligente para o programa Minha Casa Minha Vida ou mercado tradicional,
+            garantindo oportunidades compatíveis com sua realidade financeira.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube-nocookie.com/embed/gHkBGx5v7RY?rel=0&modestbranding=1"
+            title="Apresentação Martinelle"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<section class="section section-dark">
+    <h2>Como Funciona</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Informação Estratégica</h3>
+            <p>Você informa seu perfil de forma rápida e segura.</p>
+        </div>
+        <div class="card">
+            <h3>Análise Técnica</h3>
+            <p>Verificamos enquadramento em programas habitacionais ou financiamento tradicional.</p>
+        </div>
+        <div class="card">
+            <h3>Direcionamento Premium</h3>
+            <p>Você recebe apenas imóveis compatíveis com sua capacidade real.</p>
+        </div>
+    </div>
+</section>
+
+<section class="highlight">
+
+    Chega de perder tempo com ofertas aleatórias da internet.<br>
+    Aqui sua jornada começa com estratégia e direcionamento profissional.
+
+    <div class="buttons">
+        <a class="btn-primary" href="https://form.jotform.com/223226158585056" target="_blank">
+            INICIAR GRÁTIS
+        </a>
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    <a href="https://wa.me/5511970756848" class="whatsapp-link" target="_blank">
+        Fale pelo WhatsApp
+    </a><br>
+     
+    
+    
+    <a href="https://imoveis-martinelle.blogspot.com" target="_blank" class="blog-link">
+        Tire dúvidas pelo Blog
+    </a><br><br>
+
+<!-- Botão de Compartilhar -->
+<button id="btnCompartilhar" class="botao-share">
+    🔗 Compartilhar esta página
+</button>
+
+<script>
+const btn = document.querySelector('#btnCompartilhar');
+
+btn.addEventListener('click', () => {
+  // Verifica se o navegador suporta o compartilhamento nativo
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      text: 'Confira este conteúdo incrível!',
+      url: window.location.href
+    })
+    .then(() => console.log('Compartilhado com sucesso!'))
+    .catch((error) => console.log('Erro ao compartilhar:', error));
+  } else {
+    // Caso o navegador não suporte, ele pode copiar o link ou abrir um link do WhatsApp
+    alert("Seu navegador não suporta compartilhamento direto. Copie a URL da barra de endereços!");
+  }
+});
+</script><br><br>
+
+</div><br>
+    © 2026 Martinelle Imóveis
+</footer>   
+
+<div class="mart-container">
+    <div class="mart-bubble">
+        Fale comigo !
+    </div>
+
+    <a href="https://agent.jotform.com/01996186028179c2a76363b7efe17c623351" 
+       target="_blank" 
+       class="mart-float">
+        <img src="mart.png" alt="Fale com o Mart">
+    </a>
+</div>
+
+</body>
+</html>
