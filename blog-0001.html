@@ -495,8 +495,8 @@ btn.addEventListener('click', () => {
   if (navigator.share) {
     navigator.share({
       title: document.title,
-      text: 'Confira este conteúdo incrível!', // Texto simples, sem variáveis perigosas
-      url: window.location.href
+      text: 'Post de @chmartinelle', // Texto simples, sem variáveis perigosas
+      
     })
     .then(() => console.log('Compartilhado com sucesso!'))
     .catch((error) => {
