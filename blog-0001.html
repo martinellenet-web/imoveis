@@ -473,7 +473,6 @@ footer{
         @chmartinelle Link In Bio
     </a><br>
 <br>     
-  
 
 <!-- Botão de Compartilhar -->
 <button id="btnCompartilhar" class="botao-share">
@@ -484,24 +483,27 @@ footer{
 const btn = document.querySelector('#btnCompartilhar');
 
 btn.addEventListener('click', () => {
-  // Verifica se o navegador suporta o compartilhamento nativo
   if (navigator.share) {
     navigator.share({
       title: document.title,
-      text: 'Confira este conteúdo incrível!',
+      text: 'Confira este conteúdo incrível!', // Texto simples, sem variáveis perigosas
       url: window.location.href
     })
     .then(() => console.log('Compartilhado com sucesso!'))
-    .catch((error) => console.log('Erro ao compartilhar:', error));
+    .catch((error) => {
+      console.warn('Erro ao compartilhar:', error);
+      // Evite expor erro ao usuário final
+    });
   } else {
-    // Caso o navegador não suporte, ele pode copiar o link ou abrir um link do WhatsApp
-    alert("Seu navegador não suporta compartilhamento direto. Copie a URL da barra de endereços.");
+    alert("Compartilhamento não suportado. Copie o link da barra de endereços.");
   }
 });
-</script><br><br>
+</script>   
 
-</div>
 
+  
+
+ <br><br>
 
 </footer>   
 
