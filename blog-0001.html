@@ -502,7 +502,7 @@ btn.addEventListener('click', () => {
     navigator.share({
       title: document.title,
       text: 'Post de @chmartinelle', // Texto simples, sem variáveis perigosas
-      
+      url: window.location.href
     })
     .then(() => console.log('Compartilhado com sucesso!'))
     .catch((error) => {
