@@ -359,7 +359,7 @@ footer{
 }
 
 .botao-share {
-    background-color: #D2CAFF; /* Verde estilo WhatsApp */
+    background-color: #D2CAFF;
     color: black;
     padding: 10px 20px;
     border: none;
@@ -368,11 +368,17 @@ footer{
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s;
+    text-decoration: none; /* Remove sublinhado */
+    display: block;         /* Faz os botões ocuparem linha inteira e empilhar */
+    text-align: center;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 300px;
 }
 
 .botao-share:hover {
     background-color: #F4F2FF;
-}
+}   
 
 .faq-section {
   font-family: Arial, sans-serif;
@@ -504,11 +510,10 @@ footer{
 
 <footer>
 
-    <a href="https://wa.me/5511970756848" class="whatsapp-link" target="_blank">
-        Fale pelo WhatsApp
-    </a><br>
-<br>     
-  
+<!-- Botão para abrir a Bio -->
+<a href="https://linkin.bio/martinelle/" class="botao-share" target="_self">
+    🌐 @chmartinelle Link In Bio
+</a>
 
 <!-- Botão de Compartilhar -->
 <button id="btnCompartilhar" class="botao-share">
@@ -519,24 +524,27 @@ footer{
 const btn = document.querySelector('#btnCompartilhar');
 
 btn.addEventListener('click', () => {
-  // Verifica se o navegador suporta o compartilhamento nativo
   if (navigator.share) {
     navigator.share({
       title: document.title,
-      text: 'Confira este conteúdo incrível!',
+      text: 'Confira este post!', // Texto simples, sem variáveis perigosas
       url: window.location.href
     })
     .then(() => console.log('Compartilhado com sucesso!'))
-    .catch((error) => console.log('Erro ao compartilhar:', error));
+    .catch((error) => {
+      console.warn('Erro ao compartilhar:', error);
+      // Evite expor erro ao usuário final
+    });
   } else {
-    // Caso o navegador não suporte, ele pode copiar o link ou abrir um link do WhatsApp
-    alert("Seu navegador não suporta compartilhamento direto. Copie a URL da barra de endereços.");
+    alert("Compartilhamento não suportado. Copie o link da barra de endereços.");
   }
 });
-</script><br><br>
+</script>   
 
-</div>
 
+ 
+
+ <br><br>
 
 </footer>   
 
