@@ -1,185 +1,731 @@
-<!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-    <meta
-      name="description"
-      content=""
-    />
-    <title>O tempo quase parou</title>
-    <meta name="created-at" content="06-03-2026 09:11 PM" />
-    <meta name="updated-at" content="07-03-2026 06:23 AM" />
-    
-    
-    
-    
-    <link rel="stylesheet" href="https://app.notesnook.com/assets/editor-styles.css?d=1690887574068">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>O tempo quase parou</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-    <style>
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
 
-    .image-container {
-      display: block;
-    }
-    .image-container.align-right {
-      display: flex;
-      justify-content: end;
-    }
-    .image-container.align-center {
-      display: flex;
-      justify-content: center;
-    }
-    .image-container.float {
-      float: left;
-    }
-    .image-container.float.align-right {
-      float: right;
-    }
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
 
-    body {
-      background-color: transparent !important;
-      color: #202124;
-      font-family: "Open Sans", "Noto Sans", Frutiger, Calibri, Myriad, Arial, Ubuntu, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
 
-    .math-block {
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: #212121;
-    }
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
 
-    p {
-      margin-bottom: 0px;
-    }
-    
-    p[data-spacing="double"] {
-      margin-top: 1em;
-    }
-    
-    p[data-spacing="single"] {
-      margin-top: 0px;
-    }
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
 
-    p[data-spacing="single"]:empty {
-      margin-top: 1em;
-    }
-    
-    pre.codeblock {
-      overflow-x: auto;
-    }
-    
-    iframe {
-      max-width: 100% !important;
-      background-color: transparent !important;
-    }
-    
-    li > p {
-      margin-top: 0px;
-      margin-bottom: 10px;
-    }
-    
-    .checklist > li {
-      list-style: none;
-      margin: 0.25em 0;
-    }
-    
-    .checklist > li::before {
-      content: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-unchecked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2215%22%20height%3D%2215%22%20x%3D%22.5%22%20y%3D%22.5%22%20fill-rule%3D%22nonzero%22%20stroke%3D%22%234C4C4C%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A");
-      cursor: pointer;
-      height: 1.1em;
-      margin-left: -2.5em;
-      margin-top: 0em;
-      position: absolute;
-      width: 1.5em;
-      padding-left: 1em;
-    }
-    
-    .checklist li.checked::before {
-      content: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-checked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%23008837%22%20fill-rule%3D%22nonzero%22%20rx%3D%222%22%2F%3E%3Cpath%20id%3D%22Path%22%20fill%3D%22%23FFF%22%20fill-rule%3D%22nonzero%22%20d%3D%22M11.5703186%2C3.14417309%20C11.8516238%2C2.73724603%2012.4164781%2C2.62829933%2012.83558%2C2.89774797%20C13.260121%2C3.17069355%2013.3759736%2C3.72932262%2013.0909105%2C4.14168582%20L7.7580587%2C11.8560195%20C7.43776896%2C12.3193404%206.76483983%2C12.3852142%206.35607322%2C11.9948725%20L3.02491697%2C8.8138662%20C2.66090143%2C8.46625845%202.65798871%2C7.89594698%203.01850234%2C7.54483354%20C3.373942%2C7.19866177%203.94940006%2C7.19592841%204.30829608%2C7.5386474%20L6.85276923%2C9.9684299%20L11.5703186%2C3.14417309%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A");
-    }
-    
-    .checklist li.checked {
-      color: #505050;
-    }
-    
-    [dir="rtl"] .checklist > li::before {
-      margin-left: 0;
-      margin-right: -1.5em;
-    }
-    
-    blockquote {
-      border-left: 5px solid #e5e5e5;
-      padding-left: 10px;
-      margin-top: 0px;
-    }
-    
-    code:not(pre code) {
-      background-color: #f7f7f7;
-      border: 1px solid #e5e5e5;
-      border-radius: 5px;
-      padding: 3px 5px 0px 5px;
-      font-family: Hack, Consolas, "Andale Mono", "Lucida Console", "Liberation Mono", "Courier New", Courier, monospace !important;
-      font-size: 10pt !important;
-    }
-    
-    .ProseMirror code > span {
-      font-family: Hack, Consolas, "Andale Mono", "Lucida Console", "Liberation Mono", "Courier New", Courier, monospace !important;
-    }
-    
-    pre {
-      padding: 10px;
-      background-color: #e5e5e5;
-      border-radius: 5px;
-      font-family: Hack, Consolas, "Andale Mono", "Lucida Console", "Liberation Mono", "Courier New", Courier, monospace !important;
-        margin-bottom: 16px !important;
-    }
-    
-    table {
-      border-collapse: collapse;
-      margin: 0;
-      overflow: hidden;
-      table-layout: fixed;
-    }
-    
-    table td,
-    table th {
-      border: 1px solid #e5e5e5;
-      box-sizing: border-box;
-      min-width: 1em;
-      padding: 3px 5px;
-      position: relative;
-      vertical-align: top;
-    }
-    
-    table td > *,
-    table th > * {
-      margin-bottom: 0;
-    }
-    
-    table th {
-      background-color: #f7f7f7;
-      font-weight: bold;
-      text-align: left;
-    }
-    table p {
-      margin: 0;
-    }
-    </style>
-    <style>
-      code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:0 0;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#282a36}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#6272a4}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#ff79c6}.token.boolean,.token.number{color:#bd93f9}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#50fa7b}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#f1fa8c}.token.keyword{color:#8be9fd}.token.important,.token.regex{color:#ffb86c}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
-    </style>
-  </head>
-  <body>
-    <div style="padding: 0 20px;">
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
 
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="31db7280-f8a8-802b-9461-ce206d93dcdf" class="page sans"><header><h1 class="page-title" dir="auto">O tempo quase parou</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><ul id="31db7280-f8a8-8044-9d2d-f29370999c82" class="bulleted-list"><li style="list-style-type:disc"><strong>Reflexões sobre Progresso -</strong></li></ul></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8045-9ffb-dde17fb6aed1" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-807d-bc7d-fb1eee0d7bab" class="">Há momentos em que o tempo parece correr. Em outros, quase parar.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80d9-9019-d3468faf85e1" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80db-b0f3-e53de72e16b3" class="">Talvez você já tenha sentido isso: um dia comum passa rápido demais, mas uma lembrança antiga parece ocupar um espaço enorme dentro da nossa história. Quando paramos por um instante para observar a própria vida, percebemos algo curioso — o tempo não é apenas contado, ele é sentido.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80e0-ae2d-e8cba9c7b392" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80a5-bf2f-edb47175c083" class="">A ciência explica que o nosso cérebro não percebe o tempo como um relógio. Ele mede a passagem da vida através das experiências que vivemos, das emoções que sentimos e das memórias que guardamos. Quanto mais novidades e descobertas existem em um período, mais “longo” ele parece quando lembramos dele.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80dd-93cf-e9f9660817e5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8089-8aff-e1b34a9ee379" class="">Por isso, a infância costuma parecer tão extensa quando olhamos para trás. Era um tempo cheio de primeiras vezes: primeiros aprendizados, primeiras perguntas, primeiras descobertas do mundo. O cérebro registrava tudo com intensidade.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8025-b204-c0955e3f5592" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80d2-943e-d5268764e2b1" class="">Com o passar dos anos, a vida ganha rotinas. As experiências deixam de ser totalmente novas e passam a ser mais familiares. Então, sem perceber, os anos começam a parecer mais curtos.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8064-906c-c786d60fbd90" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8082-af04-ed246c060d2f" class="">Mas existe um detalhe importante nessa história.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80e6-b5cf-e6a392a9662e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80a5-85a4-df17323e542f" class="">A maturidade nos oferece algo que a pressa da juventude muitas vezes não permite: consciência. Quando chegamos a uma fase mais madura da vida, começamos a olhar para dentro com mais calma. Passamos a refletir sobre escolhas, caminhos, aprendizados e sentidos.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8088-99a9-cd1f698e2758" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-805d-b191-c7d42bd2b534" class="">E é nesse momento que o tempo, curiosamente, parece desacelerar outra vez.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80ad-a063-cc232911f18a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80a3-b9fa-e9d6969471ee" class="">Não porque os relógios mudaram, mas porque nossa percepção mudou. Começamos a viver com mais presença. Observamos mais, sentimos mais profundamente e entendemos melhor quem somos.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-807c-a7d6-c6aa991d5738" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-800e-896d-f4e7cfc5856f" class="">Talvez o verdadeiro progresso da vida não esteja apenas em avançar cada vez mais rápido, mas em desenvolver a capacidade de compreender o caminho percorrido.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80de-ab7b-c5a50fc204ea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8081-9e8e-df1df84caefe" class="">O tempo continua passando. Sempre passou.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-804a-8751-e41889d7e01b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8002-b5fa-cb1ec65e36c9" class="">Mas quando aprendemos a olhar para ele com consciência, percebemos algo essencial: cada fase da vida carrega uma forma diferente de progresso.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8036-9c15-ec52fbd64649" class="">
+</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8042-9c5c-c9a04cc428de" class="">E a maturidade, muitas vezes, é o momento em que começamos a transformar o tempo em autoconhecimento.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80c0-bf6f-e56210c14790" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="31db7280-f8a8-8045-9f96-cd2b9fceca6a" class="">Este texto inaugura a seção <strong>“Reflexões sobre Progresso”</strong>, um espaço dedicado a pensar sobre tempo, experiência, maturidade e evolução pessoal.<div style="display:contents" dir="auto"><p id="31db7280-f8a8-807a-8326-db0f3a0435d2" class="">Porque, às vezes, progredir não significa correr ou apenas preencher a vida com rotinas intermináveis. Progredir pode ser algo mais simples — e mais profundo: compreender melhor o caminho e viver de forma que possamos olhar para nossos dias, semanas, meses e anos e perceber que, em alguns momentos, conseguimos simplesmente viver.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-8051-9258-e63fdb064b1a" class="">…possamos sentir que, por um instante, o tempo quase parou.</p></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-801d-94d6-d79b92377907" class="">Talvez seja justamente aí que o progresso acontece.</p></div></blockquote></div><div style="display:contents" dir="auto"><p id="31db7280-f8a8-80ba-a860-f12d6f5237b7" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
 <script>
   function sendHeight() {
     const height = document.body.scrollHeight;
@@ -194,11 +740,4 @@
     window.addEventListener('resize', sendHeight);
   }
 </script>    
-    <h1>O tempo quase parou</h1>
-    <p data-block-id="G7zMoZ6X" data-spacing="single"><br></p><p data-block-id="Ds7WD-0X" style="text-align: right" data-spacing="single"><span style="font-size: 13px; font-family: Noto Serif, Times New Roman, serif" data-font-family="Noto Serif, Times New Roman, serif"><strong>- Reflexões sobre Progresso -</strong></span></p><p data-block-id="14M_xtGO" data-spacing="single"><br></p><p data-block-id="tiNRbUFW" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Há momentos em que o tempo parece correr. Em outros, quase parar.</span></p><p data-block-id="5frWeaZr" data-spacing="single"><br></p><p data-block-id="xSgFtn9y" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Talvez você já tenha sentido isso: um dia comum passa rápido demais, mas uma lembrança antiga parece ocupar um espaço enorme dentro da nossa história. Quando paramos por um instante para observar a própria vida, percebemos algo curioso — o tempo não é apenas contado, ele é sentido.</span></p><p data-block-id="t_3Sdk8E" data-spacing="single"><br></p><p data-block-id="n-louImC" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">A ciência explica que o nosso cérebro não percebe o tempo como um relógio. Ele mede a passagem da vida através das experiências que vivemos, das emoções que sentimos e das memórias que guardamos. Quanto mais novidades e descobertas existem em um período, mais “longo” ele parece quando lembramos dele.</span></p><p data-block-id="dnAXPlI-" data-spacing="single"><br></p><p data-block-id="7S6nUElz" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Por isso, a infância costuma parecer tão extensa quando olhamos para trás. Era um tempo cheio de primeiras vezes: primeiros aprendizados, primeiras perguntas, primeiras descobertas do mundo. O cérebro registrava tudo com intensidade.</span></p><p data-block-id="q0NIZxVj" data-spacing="single"><br></p><p data-block-id="afzNvd-G" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Com o passar dos anos, a vida ganha rotinas. As experiências deixam de ser totalmente novas e passam a ser mais familiares. Então, sem perceber, os anos começam a parecer mais curtos.</span></p><p data-block-id="AcwPWNiy" data-spacing="single"><br></p><p data-block-id="vCQnX7ej" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Mas existe um detalhe importante nessa história.</span></p><p data-block-id="ASvjl50B" data-spacing="single"><br></p><p data-block-id="Lz5riNW5" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">A maturidade nos oferece algo que a pressa da juventude muitas vezes não permite: consciência. Quando chegamos a uma fase mais madura da vida, começamos a olhar para dentro com mais calma. Passamos a refletir sobre escolhas, caminhos, aprendizados e sentidos.</span></p><p data-block-id="QGSzRPXp" data-spacing="single"><br></p><p data-block-id="2T972cc2" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">E é nesse momento que o tempo, curiosamente, parece desacelerar outra vez.</span></p><p data-block-id="tkjgdQLF" data-spacing="single"><br></p><p data-block-id="2DLXk4Wf" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Não porque os relógios mudaram, mas porque nossa percepção mudou. Começamos a viver com mais presença. Observamos mais, sentimos mais profundamente e entendemos melhor quem somos.</span></p><p data-block-id="33wX7H1a" data-spacing="single"><br></p><p data-block-id="gaus-Nq0" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Talvez o verdadeiro progresso da vida não esteja apenas em avançar cada vez mais rápido, mas em desenvolver a capacidade de compreender o caminho percorrido.</span></p><p data-block-id="hmrg3lXA" data-spacing="single"><br></p><p data-block-id="IPpjpbmm" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">O tempo continua passando. Sempre passou.</span></p><p data-block-id="3wGxN4zn" data-spacing="single"><br></p><p data-block-id="YQ7ZjjD4" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">Mas quando aprendemos a olhar para ele com consciência, percebemos algo essencial: cada fase da vida carrega uma forma diferente de progresso.</span></p><p data-block-id="Z17P7O5f" data-spacing="single"><br></p><p data-block-id="GLDIfBfk" data-spacing="single"><span data-font-family="Noto Serif, Times New Roman, serif" style="font-family: Noto Serif, Times New Roman, serif">E a maturidade, muitas vezes, é o momento em que começamos a transformar o tempo em autoconhecimento.</span></p><p data-block-id="Msdwag5W" data-spacing="single"><br></p><p data-block-id="jqAH8tgX" data-spacing="single"><br></p><blockquote data-block-id="cuBnTEdK"><p data-block-id="gkFlYuA9" data-spacing="single"><span data-font-family="serif" style="font-family: Noto Serif, Times New Roman, serif">Este texto inaugura a seção <strong>“Reflexões sobre Progresso”</strong>, um espaço dedicado a pensar sobre tempo, experiência, maturidade e evolução pessoal.</span></p><p data-spacing="single"><br></p><p data-spacing="single"><span data-font-family="serif" style="font-family: Noto Serif, Times New Roman, serif">Porque, às vezes, progredir não significa correr ou apenas preencher a vida com rotinas intermináveis. Progredir pode ser algo mais simples — e mais profundo: compreender melhor o caminho e viver de forma que possamos olhar para nossos dias, semanas, meses e anos e perceber que, em alguns momentos, conseguimos simplesmente viver.</span></p><p data-spacing="single"><br></p><p data-spacing="single"><span data-font-family="serif" style="font-family: Noto Serif, Times New Roman, serif">…possamos sentir que, por um instante, o tempo quase parou.</span></p><p data-spacing="single"><span data-font-family="serif" style="font-family: Noto Serif, Times New Roman, serif">Talvez seja justamente aí que o progresso acontece.</span></p></blockquote>
-    </div>
-    <br>
-    <br>
-    <br>
-    </body>
-</html>
+</body></html>
