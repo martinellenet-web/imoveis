@@ -498,31 +498,34 @@ footer{
 </style>
 
 <script>
-    const arquivoNota = 'blog-0003ini.md'; 
+    // 2. Esta função garante que a conversão só ocorra quando a biblioteca estiver pronta
+    function converterEMostrar() {
+        const arquivoNota = 'blog-0003ini.md?v=' + Date.now();
+        const container = document.getElementById('conteudo-nota');
 
-    async function carregarMarkdown() {
-        try {
-            const response = await fetch(arquivoNota + '?v=' + Date.now());
-            if (!response.ok) throw new Error('Arquivo não encontrado');
-            
-            const texto = await response.text();
-
-            // AJUSTE AQUI: Verifica se a biblioteca carregou e usa o comando correto
-            if (typeof marked !== 'undefined' && marked.parse) {
-                document.getElementById('conteudo-nota').innerHTML = marked.parse(texto);
-            } else {
-                // Caso a biblioteca falhe, tenta um método alternativo ou mostra texto puro
-                console.error('Biblioteca Marked não encontrada. Verifique o link do CDN.');
-                document.getElementById('conteudo-nota').innerText = texto;
-            }
-        } catch (err) {
-            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
-            console.error(err);
-        }
+        fetch(arquivoNota)
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao buscar arquivo');
+                return response.text();
+            })
+            .then(texto => {
+                // TESTE CRÍTICO: Verifica se a função 'marked.parse' existe no navegador
+                if (typeof marked !== 'undefined' && typeof marked.parse === 'function') {
+                    container.innerHTML = marked.parse(texto);
+                } else {
+                    // Se chegar aqui, a biblioteca falhou no carregamento
+                    container.innerText = texto;
+                    console.error('ERRO: A biblioteca Marked não foi carregada pelo navegador.');
+                }
+            })
+            .catch(err => {
+                container.innerHTML = "Erro ao carregar o conteúdo.";
+                console.error(err);
+            });
     }
 
-    // Executa a função
-    carregarMarkdown();
+    // 3. Só executa quando a janela inteira (incluindo scripts externos) carregar
+    window.onload = converterEMostrar;
 </script>
 
 <br>
