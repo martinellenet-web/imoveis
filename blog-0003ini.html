@@ -443,34 +443,52 @@ footer{
 </div>
 </section>
 <section>
-<!-- Onde o texto vai aparecer com estilo aplicado -->
+<!-- 1. Biblioteca para converter Markdown (Obsidian/Simplenote) -->
+<script src="https://cdn.jsdelivr.net"></script>
+
+<!-- 2. Onde o texto vai aparecer -->
 <div id="conteudo-nota" class="nota-estilizada">
     Carregando nota...
 </div>
 
 <style>
     .nota-estilizada {
-        /* Margens e Espaçamento */
-        margin: 20px auto;
+        margin: 0 auto 100px auto; /* 100px de margem no final para o botão/respiro */
         padding: 25px;
-        max-width: 800px; /* Evita que a linha fique larga demais para ler */
+        max-width: 800px; /* Alinhado com a largura da sua imagem/vídeo */
         
-        /* Tipografia */
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        font-size: 19px;       /* Tamanho maior para leitura confortável */
-        line-height: 1.7;      /* Espaço entre linhas */
-        color: #333;           /* Cor grafite escuro (melhor que preto puro) */
+        font-size: 19px;
+        line-height: 1.7;
+        color: #333;
         
-        /* Preservar formatação do Simplenote */
-        white-space: pre-wrap; /* Respeita quebras de linha e espaços */
-        word-wrap: break-word; /* Evita que palavras grandes quebrem o layout */
-        
-        /* Estética opcional */
         background-color: #fff;
+        border-radius: 8px;
+        word-wrap: break-word;
+    }
+
+    /* Estilos para elementos do Obsidian (Markdown) */
+    .nota-estilizada h1, .nota-estilizada h2, .nota-estilizada h3 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: #000;
+    }
+    
+    .nota-estilizada p {
+        margin-bottom: 1.2em;
+    }
+
+    .nota-estilizada ul, .nota-estilizada ol {
+        margin-bottom: 1.2em;
+        padding-left: 25px;
+    }
+
+    .nota-estilizada img {
+        max-width: 100%;
+        height: auto;
         border-radius: 8px;
     }
 
-    /* Ajuste para telas de celular */
     @media (max-width: 600px) {
         .nota-estilizada {
             font-size: 17px;
@@ -479,9 +497,9 @@ footer{
     }
 </style>
 
-
 <script>
-    const arquivoNota = 'blog-0003ini.txt'; // Nome corrigido
+    // Altere apenas o nome do arquivo aqui (.md ou .txt)
+    const arquivoNota = 'blog-0003ini.txt'; 
 
     fetch(arquivoNota)
         .then(response => {
@@ -489,11 +507,12 @@ footer{
             return response.text();
         })
         .then(texto => {
-            // Usamos innerText para segurança e preservar as quebras do Simplenote
-            document.getElementById('conteudo-nota').innerText = texto;
+            // Converte o Markdown em HTML e insere na DIV
+            document.getElementById('conteudo-nota').innerHTML = marked.parse(texto);
         })
         .catch(err => {
             document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
         });
 </script>
 
