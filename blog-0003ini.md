@@ -1,4 +1,4 @@
-**5 CUIDADOS PARA COM O SEU PET EM APARTAMENTOS
+**5 CUIDADOS PARA COM O SEU PET EM APARTAMENTOS**
 
 Cada vez mais os condomínios se preparam para receber os amados pets.  
 Local preparado para o banho e recreação já são praticamente obrigatórios, e assim sempre podemos encontrar muita criatividade para esses espaços.  
