@@ -443,7 +443,9 @@ footer{
 </div>
 </section>
 <section>
-<!-- Biblioteca Marked (Conversor de Markdown) -->
+
+
+<!-- Garanta que esta linha está no topo do seu HTML ou antes do script -->
 <script src="https://cdn.jsdelivr.net"></script>
 
 <div id="conteudo-nota" class="nota-estilizada">Carregando nota...</div>
@@ -496,28 +498,31 @@ footer{
 </style>
 
 <script>
-    // Adicionamos um "timestamp" (?v=...) para forçar o navegador a ler o arquivo novo, não o do cache
-    const arquivoNota = 'blog-0003ini.md?v=' + Date.now(); 
+    const arquivoNota = 'blog-0003ini.md'; 
 
-    fetch(arquivoNota)
-        .then(response => {
-            if (!response.ok) throw new Error('Não encontrado: ' + response.status);
-            return response.text();
-        })
-        .then(texto => {
-            // Verifica se a biblioteca Marked está pronta
-            if (window.marked) {
+    async function carregarMarkdown() {
+        try {
+            const response = await fetch(arquivoNota + '?v=' + Date.now());
+            if (!response.ok) throw new Error('Arquivo não encontrado');
+            
+            const texto = await response.text();
+
+            // AJUSTE AQUI: Verifica se a biblioteca carregou e usa o comando correto
+            if (typeof marked !== 'undefined' && marked.parse) {
                 document.getElementById('conteudo-nota').innerHTML = marked.parse(texto);
             } else {
-                // Se a biblioteca falhar por algum motivo, mostra o texto puro com quebras
-                document.getElementById('conteudo-nota').style.whiteSpace = "pre-wrap";
+                // Caso a biblioteca falhe, tenta um método alternativo ou mostra texto puro
+                console.error('Biblioteca Marked não encontrada. Verifique o link do CDN.');
                 document.getElementById('conteudo-nota').innerText = texto;
             }
-        })
-        .catch(err => {
-            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o arquivo: " + arquivoNota;
-            console.error('Erro detalhado:', err);
-        });
+        } catch (err) {
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
+        }
+    }
+
+    // Executa a função
+    carregarMarkdown();
 </script>
 
 <br>
