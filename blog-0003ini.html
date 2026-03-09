@@ -452,14 +452,44 @@ footer{
 
 <section>
 
-<!-- Onde o texto vai aparecer -->
-<div id="conteudo-nota" style="white-space: pre-wrap; line-height: 1.6;">
+<!-- Onde o texto vai aparecer com estilo aplicado -->
+<div id="blog-0003.txt" class="nota-estilizada">
     Carregando nota...
 </div>
 
+<style>
+    .nota-estilizada {
+        /* Margens e Espaçamento */
+        margin: 20px auto;
+        padding: 25px;
+        max-width: 800px; /* Evita que a linha fique larga demais para ler */
+        
+        /* Tipografia */
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 19px;       /* Tamanho maior para leitura confortável */
+        line-height: 1.7;      /* Espaço entre linhas */
+        color: #333;           /* Cor grafite escuro (melhor que preto puro) */
+        
+        /* Preservar formatação do Simplenote */
+        white-space: pre-wrap; /* Respeita quebras de linha e espaços */
+        word-wrap: break-word; /* Evita que palavras grandes quebrem o layout */
+        
+        /* Estética opcional */
+        background-color: #fff;
+        border-radius: 8px;
+    }
+
+    /* Ajuste para telas de celular */
+    @media (max-width: 600px) {
+        .nota-estilizada {
+            font-size: 17px;
+            padding: 15px;
+        }
+    }
+</style>
+
 <script>
-    // Basta mudar o nome do arquivo aqui
-    const arquivoNota = 'blog-0003ini.txt'; 
+    const arquivoNota = 'blog-0003.txt'; // Nome corrigido
 
     fetch(arquivoNota)
         .then(response => {
@@ -467,11 +497,11 @@ footer{
             return response.text();
         })
         .then(texto => {
+            // Usamos innerText para segurança e preservar as quebras do Simplenote
             document.getElementById('conteudo-nota').innerText = texto;
         })
         .catch(err => {
             document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
-            console.error(err);
         });
 </script>
 
