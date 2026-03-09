@@ -452,19 +452,28 @@ footer{
 
 <section>
 
-<div style="overflow: hidden; border: 1px solid #ddd; border-radius: 8px;">
-    <iframe src="https://app.simplenote.com/p/syJbpy" 
-            width="100%" 
-            height="500px" 
-            style="border:none; display: block;" 
-            scrolling="yes">
-    </iframe>
+<!-- Onde o texto vai aparecer -->
+<div id="conteudo-nota" style="white-space: pre-wrap; line-height: 1.6;">
+    Carregando nota...
 </div>
 
+<script>
+    // Basta mudar o nome do arquivo aqui
+    const arquivoNota = 'blog-003ini.txt'; 
 
-
-
-
+    fetch(arquivoNota)
+        .then(response => {
+            if (!response.ok) throw new Error('Arquivo não encontrado');
+            return response.text();
+        })
+        .then(texto => {
+            document.getElementById('conteudo-nota').innerText = texto;
+        })
+        .catch(err => {
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
+        });
+</script>
 
 </section>
 
