@@ -18,9 +18,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png?v=2" type="image/png"> 
 
-<!-- 1. Garanta que este link está correto no topo -->
-<script src="https://cdn.jsdelivr.net"></script>
-
 <style>
 *{
     margin:0;
@@ -498,40 +495,44 @@ footer{
 </style>
 
 <script>
-    function carregarEMostrar() {
-        const arquivoNota = 'blog-0003ini.md?v=' + Date.now();
-        const container = document.getElementById('conteudo-nota');
+    const arquivoNota = 'blog-0003ini.md?v=' + Date.now();
 
-        fetch(arquivoNota)
-            .then(response => {
-                if (!response.ok) throw new Error('Arquivo não encontrado');
-                return response.text();
-            })
-            .then(texto => {
-                // Tenta usar a biblioteca Marked
-                if (typeof marked !== 'undefined' && (marked.parse || typeof marked === 'function')) {
-                    const renderer = marked.parse ? marked.parse : marked;
-                    container.innerHTML = renderer(texto);
-                } 
-                else {
-                    // PLANO B: Se a biblioteca falhar, este mini-script faz o básico (Negrito e Títulos)
-                    console.warn('Usando conversor de emergência...');
-                    let htmlGambi = texto
-                        .replace(/^# (.*$)/gim, '<h1>$1</h1>')   // Título #
-                        .replace(/^## (.*$)/gim, '<h2>$1</h2>')  // Título ##
-                        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>') // Negrito **
-                        .replace(/\n/g, '<br>'); // Quebras de linha
-                    
-                    container.innerHTML = htmlGambi;
-                }
-            })
-            .catch(err => {
-                container.innerHTML = "Erro ao carregar o conteúdo: " + err.message;
-            });
+    function conversorMarkdownLite(texto) {
+        return texto
+            // Títulos (###, ##, #) - Ordem do maior para o menor é importante
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            
+            // Negrito (**texto**)
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            
+            // Itálico (*texto*)
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            
+            // Links [nome](url)
+            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color:#007bff;text-decoration:none;">$1</a>')
+            
+            // Listas com hífen ou asterisco (- item ou * item)
+            .replace(/^\s*[-*]\s+(.*)$/gim, '<li style="margin-left:20px;">$1</li>')
+            
+            // Quebras de linha (preserva parágrafos)
+            .replace(/\n/g, '<br>');
     }
 
-    // Executa assim que a página carregar
-    window.addEventListener('load', carregarEMostrar);
+    fetch(arquivoNota)
+        .then(response => {
+            if (!response.ok) throw new Error('Arquivo não encontrado');
+            return response.text();
+        })
+        .then(texto => {
+            // Aplica o conversor direto no texto recebido
+            document.getElementById('conteudo-nota').innerHTML = conversorMarkdownLite(texto);
+        })
+        .catch(err => {
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
+        });
 </script>
 
 <br>
