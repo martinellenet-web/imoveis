@@ -443,13 +443,11 @@ footer{
 </div>
 </section>
 <section>
-<!-- 1. Biblioteca para converter Markdown (Obsidian/Simplenote) -->
+<!-- Biblioteca Marked (Conversor de Markdown) -->
 <script src="https://cdn.jsdelivr.net"></script>
 
-<!-- 2. Onde o texto vai aparecer -->
-<div id="conteudo-nota" class="nota-estilizada">
-    Carregando nota...
-</div>
+<div id="conteudo-nota" class="nota-estilizada">Carregando nota...</div>
+
 
 <style>
     .nota-estilizada {
@@ -498,21 +496,27 @@ footer{
 </style>
 
 <script>
-    // Altere apenas o nome do arquivo aqui (.md ou .txt)
-    const arquivoNota = 'blog-0003ini.md'; 
+    // Adicionamos um "timestamp" (?v=...) para forçar o navegador a ler o arquivo novo, não o do cache
+    const arquivoNota = 'blog-0003ini.md?v=' + Date.now(); 
 
     fetch(arquivoNota)
         .then(response => {
-            if (!response.ok) throw new Error('Arquivo não encontrado');
+            if (!response.ok) throw new Error('Não encontrado: ' + response.status);
             return response.text();
         })
         .then(texto => {
-            // Converte o Markdown em HTML e insere na DIV
-            document.getElementById('conteudo-nota').innerHTML = marked.parse(texto);
+            // Verifica se a biblioteca Marked está pronta
+            if (window.marked) {
+                document.getElementById('conteudo-nota').innerHTML = marked.parse(texto);
+            } else {
+                // Se a biblioteca falhar por algum motivo, mostra o texto puro com quebras
+                document.getElementById('conteudo-nota').style.whiteSpace = "pre-wrap";
+                document.getElementById('conteudo-nota').innerText = texto;
+            }
         })
         .catch(err => {
-            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
-            console.error(err);
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o arquivo: " + arquivoNota;
+            console.error('Erro detalhado:', err);
         });
 </script>
 
