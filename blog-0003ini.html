@@ -498,34 +498,40 @@ footer{
 </style>
 
 <script>
-    // 2. Esta função garante que a conversão só ocorra quando a biblioteca estiver pronta
-    function converterEMostrar() {
+    function carregarEMostrar() {
         const arquivoNota = 'blog-0003ini.md?v=' + Date.now();
         const container = document.getElementById('conteudo-nota');
 
         fetch(arquivoNota)
             .then(response => {
-                if (!response.ok) throw new Error('Erro ao buscar arquivo');
+                if (!response.ok) throw new Error('Arquivo não encontrado');
                 return response.text();
             })
             .then(texto => {
-                // TESTE CRÍTICO: Verifica se a função 'marked.parse' existe no navegador
-                if (typeof marked !== 'undefined' && typeof marked.parse === 'function') {
-                    container.innerHTML = marked.parse(texto);
-                } else {
-                    // Se chegar aqui, a biblioteca falhou no carregamento
-                    container.innerText = texto;
-                    console.error('ERRO: A biblioteca Marked não foi carregada pelo navegador.');
+                // Tenta usar a biblioteca Marked
+                if (typeof marked !== 'undefined' && (marked.parse || typeof marked === 'function')) {
+                    const renderer = marked.parse ? marked.parse : marked;
+                    container.innerHTML = renderer(texto);
+                } 
+                else {
+                    // PLANO B: Se a biblioteca falhar, este mini-script faz o básico (Negrito e Títulos)
+                    console.warn('Usando conversor de emergência...');
+                    let htmlGambi = texto
+                        .replace(/^# (.*$)/gim, '<h1>$1</h1>')   // Título #
+                        .replace(/^## (.*$)/gim, '<h2>$1</h2>')  // Título ##
+                        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>') // Negrito **
+                        .replace(/\n/g, '<br>'); // Quebras de linha
+                    
+                    container.innerHTML = htmlGambi;
                 }
             })
             .catch(err => {
-                container.innerHTML = "Erro ao carregar o conteúdo.";
-                console.error(err);
+                container.innerHTML = "Erro ao carregar o conteúdo: " + err.message;
             });
     }
 
-    // 3. Só executa quando a janela inteira (incluindo scripts externos) carregar
-    window.onload = converterEMostrar;
+    // Executa assim que a página carregar
+    window.addEventListener('load', carregarEMostrar);
 </script>
 
 <br>
