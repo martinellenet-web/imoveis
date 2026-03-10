@@ -26,6 +26,8 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
     font-family:'Poppins', sans-serif;
     background:#ffffff;
     color:#1a1a1a;
@@ -129,15 +131,14 @@ header{
 .video-container {
     position: relative;
     width: 100vw; /* Ocupa 100% da largura da janela (viewport) */
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza ignorando restrições laterais */
+    margin-left: calc(-50vw + 50%);
     
     padding-bottom: 56.25%; /* Mantém proporção 16:9 (ajuste se quiser mais baixo) */
     height: 0;
     overflow: hidden;
     
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: -50px;
+    margin-bottom: 0px;
     
     border-radius: 0; /* Essencial para o efeito full */
     box-shadow: none; /* Sombras costumam denunciar bordas, melhor remover no full */
@@ -157,8 +158,8 @@ header{
     .video-container {
         /* Aumenta a altura proporcional no mobile para a imagem aparecer melhor */
         padding-bottom: 100%; /* Proporção 1:1 (quadrada) ou use 120% para vertical */
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: -50px;
+        margin-bottom: 0px;
     }
 
     .video-container img {
