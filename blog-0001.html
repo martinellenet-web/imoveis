@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@chmartinelle`s Link In Bio</title>
-  
-   <!-- Meta tags de compartilhamento (Open Graph) -->
+  <title>@chmartinelle Link In Bio</title>
+ 
+  <!-- Meta tags de compartilhamento (Open Graph) -->
   <meta name="description" content="Confira meus artigos e links!">
-  <meta property="og:title" content="martinelle Link In Bio">
-  <meta property="og:description" content="Confira todos os meus links em um só lugar!">
+  <meta property="og:title" content="chmartinelle Link In Bio">
+  <meta property="og:description" content="Confira meus artigos e links!">
   <meta property="og:url" content="https://mez.in/chmartinelle">
   <meta property="og:type" content="website">
-  
-  <meta property="og:image" content="https://blog.martinelle.workers.dev/blog-0001-reduzido.jpg">  
+ 
+  <meta property="og:image" content="https://blog.martinelle.workers.dev/og-whatsapp.jpg"> 
 
   <!-- Outras tags (fontes, favicon, etc.) -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.png?v=2" type="image/png">  
+  <link rel="icon" href="favicon.png?v=2" type="image/png"> 
 
 <style>
 *{
@@ -26,6 +26,8 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
     font-family:'Poppins', sans-serif;
     background:#ffffff;
     color:#1a1a1a;
@@ -111,7 +113,7 @@ header{
     font-size:22px;
     padding:50px 10%;
     background:#ffffff;
-    color:black;
+    color:white;
 }
 
 .section-dark{
@@ -125,17 +127,21 @@ header{
     text-align:left;
 }
 
-/* VIDEO */
-.video-container{
-    position:relative;
-    padding-bottom:56.25%;
-    height:0;
-    overflow:hidden;
-    max-width:1000px;
-    margin:50px auto 0 auto;
-    border-radius:12px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
-
+/* VIDEO FULL WIDTH - SEM MARGENS */
+.video-container {
+    position: relative;
+    width: 100vw; /* Ocupa 100% da largura da janela (viewport) */
+    margin-left: calc(-50vw + 50%);
+    
+    padding-bottom: 56.25%; /* Mantém proporção 16:9 (ajuste se quiser mais baixo) */
+    height: 0;
+    overflow: hidden;
+    
+    margin-top: -50px;
+    margin-bottom: 0px;
+    
+    border-radius: 0; /* Essencial para o efeito full */
+    box-shadow: none; /* Sombras costumam denunciar bordas, melhor remover no full */
 }
 
 .video-container img {
@@ -144,9 +150,32 @@ header{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* A imagem preenche todo o contêiner, cortando o excesso */
-    object-position: center; /* Centraliza a imagem dentro do contêiner */
-}   
+    object-fit: cover;
+}
+
+/* AJUSTES PARA TELAS PEQUENAS */
+@media (max-width: 768px) {
+    .video-container {
+        /* Aumenta a altura proporcional no mobile para a imagem aparecer melhor */
+        padding-bottom: 100%; /* Proporção 1:1 (quadrada) ou use 120% para vertical */
+        margin-top: -50px;
+        margin-bottom: 0px;
+    }
+
+    .video-container img {
+        /* Garante que o foco da imagem seja o centro no celular */
+        object-position: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        padding-bottom: 130%; /* Mais alto ainda para preencher bem a tela do celular */
+    }
+}
+
+
+
 
 /* GRID */
 .grid{
@@ -217,6 +246,35 @@ header{
 .btn-primary:hover{
     background:#F4F2FF;
 }
+
+  .btn-flutuante-bio {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-flutuante-bio:hover {
+    transform: scale(1.05);
+    background-color: #333;
+  }
+
+  @keyframes pulsar {
+    0% { box-shadow: 0 0 0 0 rgba(0,0,0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0,0,0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0, 0); }
+  }
+
 
 /* FOOTER */
 footer{
@@ -370,8 +428,33 @@ footer{
   color: #ffffff;
 }
 
-.botao-share {
-    background-color: #8982a2;
+.botao-close {
+    background-color: transparent; /* Fundo transparente */
+    color: #8982a2;                /* Cor do texto (antiga cor do fundo) */
+    border: 2px solid #8982a2;     /* Adiciona o contorno */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s;          /* Transição suave para todas as propriedades */
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 300px;
+}
+
+.botao-close:hover {
+    background-color: #000000;     /* Preenche ao passar o mouse */
+    color: white;                  /* Texto volta a ser branco no hover */
+}
+
+    
+    
+   .botao-share {
+    background-color: #000000;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -380,16 +463,22 @@ footer{
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s;
-    text-decoration: none; /* Remove sublinhado */
-    display: block;         /* Faz os botões ocuparem linha inteira e empilhar */
+    text-decoration: none;
+    display: block;
     text-align: center;
     margin: 10px auto;
     width: 80%;
     max-width: 300px;
-}
+  }
 
-.botao-share:hover {
-    background-color: #000000;
+  .botao-share:hover {
+    background-color: #010101;
+    color: white;
+  }
+    
+    
+     
+    
 }   
 
 .faq-section {
@@ -434,91 +523,153 @@ footer{
 .faq-section .faq-item.active .faq-answer {
   display: block;
 }   
-
 </style>
 </head>
-
 <body>
-
-
 <section class="section">
-
     <div class="video-container">
-    <img src="blog-0001.png" alt="Apresentação Martinelle" loading="lazy">
+    <img src="blog-0001.jpg" alt="Apresentação Martinelle" loading="lazy">
 </div>
 </section>
+<section>
 
 
+<div id="conteudo-nota" class="nota-estilizada">Carregando nota...</div>
 
-<section class="highlight">
 
-    <div>
-       
-  <h2>Dicas de decoração para apartamentos pequenos</h2>
-  <br>
-  <p>Aqui estão algumas dicas de decoração para apartamentos pequenos que podem ajudar a otimizar o espaço e torná-lo mais funcional e aconchegante:</p>
+<style>
+    .nota-estilizada {
+        margin: 0 auto 100px auto; /* 100px de margem no final para o botão/respiro */
+        padding: 25px;
+        max-width: 800px; /* Alinhado com a largura da sua imagem/vídeo */
+        
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 19px;
+        line-height: 1.7;
+        color: #333;
+        
+        background-color: #fff;
+        border-radius: 8px;
+        word-wrap: break-word;
+    }
 
-  <h3>Escolha cores claras</h3>
-  <p>Cores claras, como branco, tons pastéis e tons neutros, criam uma sensação de amplitude, refletindo a luz natural e deixando o ambiente mais arejado. Você também pode usar móveis e acessórios em tons claros e neutros para manter a sensação de espaço aberto.</p>
+    /* Estilos para elementos do Obsidian (Markdown) */
+    .nota-estilizada h1, .nota-estilizada h2, .nota-estilizada h3 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: #000;
+    }
+    
+    .nota-estilizada p {
+        margin-bottom: 1.2em;
+    }
 
-  <h3>Use espelhos</h3>
-  <p>Espelhos são uma ótima maneira de criar a ilusão de espaço em um apartamento pequeno. Eles refletem a luz natural e criam a sensação de profundidade, tornando o ambiente mais espaçoso e iluminado.</p>
+    .nota-estilizada ul, .nota-estilizada ol {
+        margin-bottom: 1.2em;
+        padding-left: 25px;
+    }
 
-  <h3>Móveis multifuncionais</h3>
-  <p>Móveis multifuncionais são uma ótima maneira de economizar espaço em um apartamento pequeno. Por exemplo, um sofá-cama pode ser usado como um sofá durante o dia e como uma cama à noite. Uma mesa dobrável pode ser usada como uma mesa de jantar ou como uma mesa de trabalho.</p>
+    .nota-estilizada img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
 
-  <h3>Use prateleiras</h3>
-  <p>Prateleiras são uma ótima maneira de maximizar o espaço de armazenamento em um apartamento pequeno. Elas podem ser usadas para armazenar livros, objetos decorativos e outros itens pessoais. Além disso, as prateleiras podem ser usadas para exibir plantas e outros itens decorativos.</p>
+    @media (max-width: 600px) {
+        .nota-estilizada {
+            font-size: 17px;
+            padding: 15px;
+        }
+    }
+</style>
 
-  <h3>Crie zonas de estar</h3>
-  <p>Crie zonas de estar distintas em seu apartamento para maximizar o espaço e torná-lo mais funcional. Por exemplo, você pode criar uma área de estar com um sofá e uma mesa de café, uma área de jantar com uma mesa e cadeiras e uma área de trabalho com uma mesa e uma cadeira de escritório.</p>
+<script>
+    const arquivoNota = 'blog-0001.md?v=' + Date.now();
 
-  <p>Espero que essas dicas ajudem você a criar um espaço aconchegante e funcional em seu apartamento pequeno! 😊</p>
- 
- </div>
+    function conversorMarkdownLite(texto) {
+        return texto
+            // Títulos (###, ##, #) - Ordem do maior para o menor é importante
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            
+            // Negrito (**texto**)
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            
+            // Itálico (*texto*)
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            
+            // Links [nome](url)
+            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color:#007bff;text-decoration:none;">$1</a>')
+            
+            // Listas com hífen ou asterisco (- item ou * item)
+            .replace(/^\s*[-*]\s+(.*)$/gim, '<li style="margin-left:20px;">$1</li>')
+            
+            // Quebras de linha (preserva parágrafos)
+            .replace(/\n/g, '<br>');
+    }
+
+    fetch(arquivoNota)
+        .then(response => {
+            if (!response.ok) throw new Error('Arquivo não encontrado');
+            return response.text();
+        })
+        .then(texto => {
+            // Aplica o conversor direto no texto recebido
+            document.getElementById('conteudo-nota').innerHTML = conversorMarkdownLite(texto);
+        })
+        .catch(err => {
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
+        });
+</script>
 
 </section>
-
-
-
 
 <footer>
 
-<!-- Botão para fechar a página -->
-<button onclick="window.close()" class="botao-share">
-    Fechar
-</button>
-
-<!-- Botão de Compartilhar -->
-<button id="btnCompartilhar" class="botao-share">
-    Compartilhar esta página
+<!-- Botão com a função de fechar/retornar -->
+<button onclick="fecharOuVoltar()" class="botao-share">
+    Fechar esse artigo
 </button>
 
 <script>
-const btn = document.querySelector('#btnCompartilhar');
+function fecharOuVoltar() {
+  // Tenta fechar a aba atual
+  window.close();
 
-btn.addEventListener('click', () => {
-  if (navigator.share) {
-    navigator.share({
-      title: document.title,
-      text: 'Confira este post!', // Texto simples, sem variáveis perigosas
-      url: window.location.href
-    })
-    .then(() => console.log('Compartilhado com sucesso!'))
-    .catch((error) => {
-      console.warn('Erro ao compartilhar:', error);
-      // Evite expor erro ao usuário final
-    });
+  // Se a aba não fechar (limitação de alguns navegadores), executa a lógica de retorno
+  setTimeout(() => {
+    if (document.referrer.includes('mez.ink')) {
+      window.history.back();
+    } else {
+      // Se não houver histórico, redireciona na mesma aba
+      window.location.href = 'https://mez.ink/chmartinelle';
+    }
+  }, 150); 
+}
+</script>
+
+
+
+<button onclick="retornarOuIrParaBio()" class="btn-flutuante-bio">
+  🔗 Minha Bio
+</button>
+
+<script>
+function retornarOuIrParaBio() {
+  // Se o usuário veio de 'mez.ink', ele apenas volta (evita nova aba)
+  if (document.referrer.includes('mez.ink')) {
+    window.history.back();
   } else {
-    alert("Compartilhamento não suportado. Copie o link da barra de endereços.");
+    // Se veio de outro lugar, abre a bio na mesma aba
+    window.location.href = 'https://mez.ink/chmartinelle';
   }
-});
-</script>   
+}
+</script>
 
-
-  
-
- <br><br>
+<br>
+<br>
 
 </footer>   
 
