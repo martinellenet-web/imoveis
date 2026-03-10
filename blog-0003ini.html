@@ -125,16 +125,22 @@ header{
     text-align:left;
 }
 
-/* VIDEO FULL WIDTH */
+/* VIDEO FULL WIDTH - SEM MARGENS */
 .video-container {
     position: relative;
-    padding-bottom: 100vh; /* Define a altura da seção (ex: 45% da altura da tela) */
+    width: 100vw; /* Ocupa 100% da largura da janela (viewport) */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza ignorando restrições laterais */
+    
+    padding-bottom: 56.25%; /* Mantém proporção 16:9 (ajuste se quiser mais baixo) */
     height: 0;
     overflow: hidden;
-    width: 100%; /* Ocupa toda a largura */
-    margin: 40px 0 10px 0; /* Remove o 'auto' para não centralizar com margens */
-    border-radius: 0; /* Remove bordas arredondadas para o efeito full */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+    border-radius: 0; /* Essencial para o efeito full */
+    box-shadow: none; /* Sombras costumam denunciar bordas, melhor remover no full */
 }
 
 .video-container img {
@@ -143,9 +149,31 @@ header{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    object-position: center;
+    object-fit: cover;
 }
+
+/* AJUSTES PARA TELAS PEQUENAS */
+@media (max-width: 768px) {
+    .video-container {
+        /* Aumenta a altura proporcional no mobile para a imagem aparecer melhor */
+        padding-bottom: 100%; /* Proporção 1:1 (quadrada) ou use 120% para vertical */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .video-container img {
+        /* Garante que o foco da imagem seja o centro no celular */
+        object-position: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        padding-bottom: 130%; /* Mais alto ainda para preencher bem a tela do celular */
+    }
+}
+
+
 
 
 /* GRID */
