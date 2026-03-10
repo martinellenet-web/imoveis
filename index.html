@@ -244,7 +244,7 @@ header{
 }
 
 .btn-primary{
-    background:#8982a2;
+    background:#000000;
     color:white;
     padding:18px 70px;
     text-decoration:none;
@@ -257,7 +257,8 @@ header{
 }
 
 .btn-primary:hover{
-    background:#000000;
+    background:#f3f3f3;
+    color:black;
 }
 
 /* FOOTER */
@@ -413,7 +414,7 @@ footer{
 }
 
 .botao-share {
-    background-color: #8982a2;
+    background-color: #000000;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -431,7 +432,8 @@ footer{
 }
 
 .botao-share:hover {
-    background-color: #000000;
+    background-color: #ffffff;
+    color: black;
 }   
 
 .botao-close {
@@ -593,38 +595,37 @@ footer{
 
 <footer>
 
-<button onclick="window.open('', '_self', ''); window.close();" class="botao-close">
-    Fechar
-</button>
-
-<!-- Botão de Compartilhar -->
-<button id="btnCompartilhar" class="botao-share">
-    Compartilhar esta página
+<button onclick="irParaBio()" class="botao-share">
+    Fechar e ir para Bio
 </button>
 
 <script>
-const btn = document.querySelector('#btnCompartilhar');
+function irParaBio() {
+  // Tenta fechar a aba (caso tenha sido aberta vindo da Bio)
+  window.close();
 
-btn.addEventListener('click', () => {
-  if (navigator.share) {
-    navigator.share({
-      title: document.title,
-      text: 'Confira este post!', // Texto simples, sem variáveis perigosas
-      url: window.location.href
-    })
-    .then(() => console.log('Compartilhado com sucesso!'))
-    .catch((error) => {
-      console.warn('Erro ao compartilhar:', error);
-      // Evite expor erro ao usuário final
-    });
-  } else {
-    alert("Compartilhamento não suportado. Copie o link da barra de endereços.");
-  }
-});
-</script>   
+  // Se não fechar, redireciona para a Bio na mesma aba (evita abrir nova)
+  setTimeout(() => {
+    window.location.href = 'https://mez.ink/chmartinelle';
+  }, 100);
+}
+</script>
 
+<br>
+<br>
 
- 
+<div style="text-align: center; margin-top: 10px; padding: 5px;">
+    <a href="https://mez.ink/chmartinelle" 
+       target="_blank" 
+       style="font-family: 'Inter', sans-serif; 
+              font-size: 13px; 
+              color: #666666; 
+              text-decoration: none; 
+              letter-spacing: 0.5px;
+              opacity: 0.8;">
+        mez.ink/chmartinelle
+    </a>
+</div>
 
  <br><br>
 
