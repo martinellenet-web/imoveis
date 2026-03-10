@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@chmartinelle`s Link In Bio</title>
-  
+  <title>@chmartinelle Link In Bio</title>
+ 
   <!-- Meta tags de compartilhamento (Open Graph) -->
   <meta name="description" content="Confira meus artigos e links!">
-  <meta property="og:title" content="martinelle Link In Bio">
-  <meta property="og:description" content="Confira todos os meus links em um só lugar!">
+  <meta property="og:title" content="chmartinelle Link In Bio">
+  <meta property="og:description" content="Confira meus artigos e links!">
   <meta property="og:url" content="https://mez.in/chmartinelle">
   <meta property="og:type" content="website">
-  
-  <meta property="og:image" content="https://blog.martinelle.workers.dev/blog-0002-reduzido.jpg">  
+ 
+  <meta property="og:image" content="https://blog.martinelle.workers.dev/og-whatsapp.jpg"> 
 
   <!-- Outras tags (fontes, favicon, etc.) -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.png?v=2" type="image/png">  
+  <link rel="icon" href="favicon.png?v=2" type="image/png"> 
 
 <style>
 *{
@@ -26,6 +26,8 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
     font-family:'Poppins', sans-serif;
     background:#ffffff;
     color:#1a1a1a;
@@ -61,7 +63,7 @@ header{
     overflow:hidden;
 }
 
-/* IMAGEM DE FUNDO ZOOM CORRIGIDO */
+/* IMAGEM DE FUNDO COM ZOOM CORRIGIDO */
 .hero::before{
     content:"";
     position:absolute;
@@ -125,17 +127,21 @@ header{
     text-align:left;
 }
 
-/* VIDEO */
-.video-container{
-    position:relative;
-    padding-bottom:56.25%;
-    height:0;
-    overflow:hidden;
-    max-width:1000px;
-    margin:50px auto 0 auto;
-    border-radius:12px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
-
+/* VIDEO FULL WIDTH - SEM MARGENS */
+.video-container {
+    position: relative;
+    width: 100vw; /* Ocupa 100% da largura da janela (viewport) */
+    margin-left: calc(-50vw + 50%);
+    
+    padding-bottom: 56.25%; /* Mantém proporção 16:9 (ajuste se quiser mais baixo) */
+    height: 0;
+    overflow: hidden;
+    
+    margin-top: -50px;
+    margin-bottom: 0px;
+    
+    border-radius: 0; /* Essencial para o efeito full */
+    box-shadow: none; /* Sombras costumam denunciar bordas, melhor remover no full */
 }
 
 .video-container img {
@@ -144,9 +150,32 @@ header{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* A imagem preenche todo o contêiner, cortando o excesso */
-    object-position: center; /* Centraliza a imagem dentro do contêiner */
-}   
+    object-fit: cover;
+}
+
+/* AJUSTES PARA TELAS PEQUENAS */
+@media (max-width: 768px) {
+    .video-container {
+        /* Aumenta a altura proporcional no mobile para a imagem aparecer melhor */
+        padding-bottom: 100%; /* Proporção 1:1 (quadrada) ou use 120% para vertical */
+        margin-top: -50px;
+        margin-bottom: 0px;
+    }
+
+    .video-container img {
+        /* Garante que o foco da imagem seja o centro no celular */
+        object-position: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        padding-bottom: 130%; /* Mais alto ainda para preencher bem a tela do celular */
+    }
+}
+
+
+
 
 /* GRID */
 .grid{
@@ -217,6 +246,35 @@ header{
 .btn-primary:hover{
     background:#F4F2FF;
 }
+
+  .btn-flutuante-bio {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-flutuante-bio:hover {
+    transform: scale(1.05);
+    background-color: #333;
+  }
+
+  @keyframes pulsar {
+    0% { box-shadow: 0 0 0 0 rgba(0,0,0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0,0,0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0, 0); }
+  }
+
 
 /* FOOTER */
 footer{
@@ -370,8 +428,33 @@ footer{
   color: #ffffff;
 }
 
-.botao-share {
-    background-color: #8982a2;
+.botao-close {
+    background-color: transparent; /* Fundo transparente */
+    color: #8982a2;                /* Cor do texto (antiga cor do fundo) */
+    border: 2px solid #8982a2;     /* Adiciona o contorno */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s;          /* Transição suave para todas as propriedades */
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 300px;
+}
+
+.botao-close:hover {
+    background-color: #000000;     /* Preenche ao passar o mouse */
+    color: white;                  /* Texto volta a ser branco no hover */
+}
+
+    
+    
+   .botao-share {
+    background-color: #000000;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -380,16 +463,22 @@ footer{
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s;
-    text-decoration: none; /* Remove sublinhado */
-    display: block;         /* Faz os botões ocuparem linha inteira e empilhar */
+    text-decoration: none;
+    display: block;
     text-align: center;
     margin: 10px auto;
     width: 80%;
     max-width: 300px;
-}
+  }
 
-.botao-share:hover {
-    background-color: #000000;
+  .botao-share:hover {
+    background-color: #ffffff;
+    color: black;
+  }
+    
+    
+     
+    
 }   
 
 .faq-section {
@@ -434,74 +523,146 @@ footer{
 .faq-section .faq-item.active .faq-answer {
   display: block;
 }   
-
 </style>
 </head>
-
 <body>
-
-
 <section class="section">
-
     <div class="video-container">
-    <img src="blog-0002.png" alt="Apresentação Martinelle" loading="lazy">
+    <img src="blog-0002-reduzido.jpg" alt="Apresentação Martinelle" loading="lazy">
 </div>
 </section>
+<section>
 
 
+<div id="conteudo-nota" class="nota-estilizada">Carregando nota...</div>
 
-<section class="highlight">
 
-<head><title></title><meta charset="utf-8"><link rel="stylesheet" href="./styles.css"></head><body class="light-theme blue_sky" style="padding: 20px;"><div class="shine-editor"><h2><b>Como ornamentar e cultivar cactos e suculentas em apartamentos.</b></h2><div><b><br></b></div><div>Você sabia que os cactos e as suculentas são plantas que se adaptam muito bem a ambientes internos e que podem trazer mais vida e beleza para o seu apartamento?</div><div>Neste artigo, vamos encorajar sobre ornamentar e cultivar cactos e suculentas de forma simples e prática, sem precisar de muito espaço ou cuidados especiais. Mas antes, vamos entender melhor o que são essas plantas e por que elas são tão especiais.</div><div type="paragraph"><b>&nbsp;</b></div><h3><b>O que são cactos e suculentas?</b></h3><div type="heading"><b>&nbsp;</b>Os cactos e as suculentas são plantas que pertencem à família das suculentas, que são aquelas que têm a capacidade de armazenar água em suas folhas, caules ou raízes. Essa característica permite que elas sobrevivam em condições de seca ou de pouca irrigação, como nos desertos ou nas rochas. Os cactos são um tipo de suculenta que se destaca por ter espinhos, que servem para protegê-los de predadores e de perda de água. Existem mais de 10 mil espécies&nbsp;de cactos e suculentas no mundo, com formas, cores e tamanhos variados.</div><div type="paragraph"><b>&nbsp;</b></div><h3><b>Quais são os benefícios de ter cactos e suculentas em apartamentos?</b></h3><div type="heading"><b>&nbsp;</b>Ter cactos e suculentas em apartamentos pode trazer vários benefícios, tanto para a sua saúde quanto para a sua decoração. Veja alguns deles:</div><div type="paragraph"><b>&nbsp;</b></div><div><b><u>Purificam o ar</u></b><b><u>:</u> </b>Os cactos e as suculentas são capazes de absorver o dióxido de carbono e liberar oxigênio durante o dia, o que ajuda a melhorar a qualidade do ar que você respira. Além disso, algumas espécies, como a babosa&nbsp;e a sanseviéria, também podem filtrar toxinas como o formaldeído e o benzeno, que são comuns em produtos de limpeza e de beleza.</div><div><br></div><div><b><u>Reduzem o estresse</u></b><b><u>:</u> </b>Os cactos e as suculentas podem ter um efeito calmante e relaxante, pois transmitem uma sensação de paz e harmonia. Estudos mostram que ter plantas em casa pode reduzir os níveis de cortisol, o hormônio do estresse, e aumentar a produtividade e a criatividade.</div><div><br></div><div><b><u>Embelezam o ambiente</u></b><b><u>:</u> </b>Os cactos e as suculentas são plantas que podem dar um toque de charme e elegância ao seu apartamento, pois têm formas e cores que combinam com qualquer estilo de decoração. Você pode usar os cactos e as suculentas para criar pontos de interesse, contrastes e texturas em diferentes espaços, como na sala, no quarto, na cozinha ou na varanda.</div><div><b>&nbsp;</b></div><h3><b>Como escolher os melhores cactos e suculentas para o seu apartamento?</b></h3><div type="heading"><b>&nbsp;</b>Na hora de escolher os cactos e as suculentas para o seu apartamento, é importante levar em conta alguns fatores, como a iluminação, a temperatura, a umidade e o estilo de decoração. Veja algumas dicas:</div><div type="paragraph"><b>&nbsp;</b></div><div><b><u>Iluminação</u></b><b><u>:</u> </b>Os cactos e as suculentas são plantas que gostam de luz, mas nem todas precisam de sol direto. Algumas espécies, como a rosa de pedra, a coroa de frade&nbsp;e o cacto estrela, preferem ficar em locais bem iluminados, mas sem incidência direta de raios solares. Outras espécies, como a planta fantasma, a echevéria&nbsp;e o cacto rabo de macaco, podem tolerar algumas horas de sol por dia, mas devem ser protegidas do calor excessivo. Por isso, é recomendável colocar os seus cactos e suculentas perto de janelas ou varandas, mas sem expô-los ao sol forte, especialmente no verão.</div><div><br></div><div><b><u>Temperatura</u></b><b><u>:</u> </b>Os cactos e as suculentas são plantas que se adaptam a diferentes temperaturas, mas não suportam frio ou calor extremos. A temperatura ideal para os seus cactos e suculentas é entre 15°C e 25°C. Evite colocá-los em locais com ar condicionado ou aquecedor, pois isso pode ressecar ou queimar as suas folhas. Se a temperatura cair muito no inverno, você pode cobrir os seus cactos e suculentas com um tecido ou um plástico, para protegê-los da geada.</div><div><br></div><div><b><u>Umidade</u></b><b><u>:</u> </b>Os cactos e as suculentas são plantas que não precisam de muita água, mas também não gostam de ambientes muito secos. A umidade ideal para os seus cactos e suculentas é entre 40% e 60%. Você pode usar um higrômetro para medir a umidade do ar no seu apartamento, ou simplesmente observar as suas plantas. Se elas estiverem murchas ou enrugadas, pode ser um sinal de falta de água. Se elas estiverem amareladas ou podres, pode ser um sinal de excesso de água.</div><div><br></div><div><b><u>Estilo de decoração</u></b><b><u>:</u> </b>Os cactos e as suculentas são plantas que podem combinar com qualquer estilo de decoração, desde o mais clássico ao mais moderno. Você pode escolher as espécies que mais combinam com o seu gosto e com o seu espaço, levando em conta as formas, as cores e os tamanhos dos cactos e das suculentas. Você pode optar por espécies mais simples e discretas, como a haworthia&nbsp;e o cacto bola de neve, ou por espécies mais exóticas e coloridas, como a flor de maio&nbsp;e o cacto cereus. O importante é que você se sinta bem com as suas plantas e que elas reflitam a sua personalidade.</div><div>Como montar arranjos criativos com cactos e suculentas?</div><div type="heading"><b>&nbsp;</b></div><div>Uma das formas mais divertidas e originais de ornamentar o seu apartamento com cactos e suculentas é montar arranjos criativos com essas plantas. Você pode usar a sua imaginação e criar composições únicas, que vão deixar o seu ambiente mais bonito e atraente. Veja algumas ideias:</div><div type="paragraph"><b>&nbsp;</b></div><div><b><u>Use vasos diferentes</u></b><b><u>:</u> </b>Você pode usar vasos de diferentes materiais, formas e cores para montar os seus arranjos de cactos e suculentas. Você pode usar vasos de cerâmica, de vidro, de metal, de madeira, de plástico ou até mesmo de objetos reciclados, como latas, xícaras, garrafas e livros. O importante é que os vasos tenham furos na parte inferior, para facilitar a drenagem da água.</div><div><br></div><div><b><u>Combine diferentes tipos de cactos e suculentas</u></b><b><u>:</u> </b>Você pode combinar diferentes tipos de cactos e suculentas em um mesmo vaso, criando arranjos harmoniosos e originais. Você pode misturar espécies de diferentes alturas, texturas e cores, criando contrastes e efeitos visuais interessantes. Por exemplo, você pode combinar uma rosa de pedra&nbsp;com um cacto bola de neve&nbsp;e uma echevéria, formando um arranjo delicado e romântico. Ou você pode combinar uma coroa de frade&nbsp;com um cacto rabo de macaco&nbsp;e uma planta fantasma, formando um arranjo exótico e divertido.</div><div><br></div><div><b><u>Incremente os seus arranjos com outros elementos</u></b><b><u>:</u> </b>Você pode incrementar os seus arranjos de cactos e suculentas com outros elementos, como pedras, cascalho, musgo, conchas e miniaturas. Esses elementos podem ajudar a preencher os espaços vazios, a dar mais cor e textura aos seus arranjos e a criar cenários lúdicos e temáticos. Por exemplo, você pode usar pedras brancas e conchas para criar um arranjo com tema marinho, ou usar musgo e miniaturas de animais para criar um arranjo com tema florestal.</div></div></body>
+<style>
+    .nota-estilizada {
+        margin: 0 auto 100px auto; /* 100px de margem no final para o botão/respiro */
+        padding: 25px;
+        max-width: 800px; /* Alinhado com a largura da sua imagem/vídeo */
+        
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 19px;
+        line-height: 1.7;
+        color: #333;
+        
+        background-color: #fff;
+        border-radius: 8px;
+        word-wrap: break-word;
+    }
+
+    /* Estilos para elementos do Obsidian (Markdown) */
+    .nota-estilizada h1, .nota-estilizada h2, .nota-estilizada h3 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: #000;
+    }
+    
+    .nota-estilizada p {
+        margin-bottom: 1.2em;
+    }
+
+    .nota-estilizada ul, .nota-estilizada ol {
+        margin-bottom: 1.2em;
+        padding-left: 25px;
+    }
+
+    .nota-estilizada img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 600px) {
+        .nota-estilizada {
+            font-size: 17px;
+            padding: 15px;
+        }
+    }
+</style>
+
+<script>
+    const arquivoNota = 'blog-0002.md?v=' + Date.now();
+
+    function conversorMarkdownLite(texto) {
+        return texto
+            // Títulos (###, ##, #) - Ordem do maior para o menor é importante
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            
+            // Negrito (**texto**)
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            
+            // Itálico (*texto*)
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            
+            // Links [nome](url)
+            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color:#007bff;text-decoration:none;">$1</a>')
+            
+            // Listas com hífen ou asterisco (- item ou * item)
+            .replace(/^\s*[-*]\s+(.*)$/gim, '<li style="margin-left:20px;">$1</li>')
+            
+            // Quebras de linha (preserva parágrafos)
+            .replace(/\n/g, '<br>');
+    }
+
+    fetch(arquivoNota)
+        .then(response => {
+            if (!response.ok) throw new Error('Arquivo não encontrado');
+            return response.text();
+        })
+        .then(texto => {
+            // Aplica o conversor direto no texto recebido
+            document.getElementById('conteudo-nota').innerHTML = conversorMarkdownLite(texto);
+        })
+        .catch(err => {
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
+        });
+</script>
 
 </section>
-
-
-
 
 <footer>
 
-<!-- Botão para fechar a página -->
-<button onclick="window.close()" class="botao-share">
-    Fechar
-</button>
-
-<!-- Botão de Compartilhar -->
-<button id="btnCompartilhar" class="botao-share">
-    Compartilhar esta página
+<button onclick="irParaBio()" class="botao-share">
+    Fechar e ir para Bio
 </button>
 
 <script>
-const btn = document.querySelector('#btnCompartilhar');
+function irParaBio() {
+  // Tenta fechar a aba (caso tenha sido aberta vindo da Bio)
+  window.close();
 
-btn.addEventListener('click', () => {
-  if (navigator.share) {
-    navigator.share({
-      title: document.title,
-      text: 'Confira este post!', // Texto simples, sem variáveis perigosas
-      url: window.location.href
-    })
-    .then(() => console.log('Compartilhado com sucesso!'))
-    .catch((error) => {
-      console.warn('Erro ao compartilhar:', error);
-      // Evite expor erro ao usuário final
-    });
-  } else {
-    alert("Compartilhamento não suportado. Copie o link da barra de endereços.");
-  }
-});
-</script>   
+  // Se não fechar, redireciona para a Bio na mesma aba (evita abrir nova)
+  setTimeout(() => {
+    window.location.href = 'https://mez.ink/chmartinelle';
+  }, 100);
+}
+</script>
+
+<br>
+<br>
+
+<div style="text-align: center; margin-top: 10px; padding: 5px;">
+    <a href="https://mez.ink/chmartinelle" 
+       target="_blank" 
+       style="font-family: 'Inter', sans-serif; 
+              font-size: 13px; 
+              color: #666666; 
+              text-decoration: none; 
+              letter-spacing: 0.5px;
+              opacity: 0.8;">
+        mez.ink/chmartinelle
+    </a>
+</div>
 
 
-  
-
- <br><br>
 
 </footer>   
-
-
-
-
 
 <script>
   document.querySelectorAll('.faq-question').forEach(question => {
@@ -511,5 +672,6 @@ btn.addEventListener('click', () => {
     });
   });
 </script>   
+
 </body>
 </html>
