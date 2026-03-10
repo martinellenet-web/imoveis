@@ -472,8 +472,8 @@ footer{
   }
 
   .botao-share:hover {
-    background-color: #010101;
-    color: white;
+    background-color: #ffffff;
+    color: black;
   }
     
     
@@ -628,43 +628,19 @@ footer{
 
 <footer>
 
-<!-- Botão com a função de fechar/retornar -->
-<button onclick="fecharOuVoltar()" class="botao-share">
-    Fechar esse artigo
+<button onclick="irParaBio()" class="botao-share">
+    Fechar e ir para Bio
 </button>
 
 <script>
-function fecharOuVoltar() {
-  // Tenta fechar a aba atual
+function irParaBio() {
+  // Tenta fechar a aba (caso tenha sido aberta vindo da Bio)
   window.close();
 
-  // Se a aba não fechar (limitação de alguns navegadores), executa a lógica de retorno
+  // Se não fechar, redireciona para a Bio na mesma aba (evita abrir nova)
   setTimeout(() => {
-    if (document.referrer.includes('mez.ink')) {
-      window.history.back();
-    } else {
-      // Se não houver histórico, redireciona na mesma aba
-      window.location.href = 'https://mez.ink/chmartinelle';
-    }
-  }, 150); 
-}
-</script>
-
-
-
-<button onclick="retornarOuIrParaBio()" class="btn-flutuante-bio">
-  🔗 Minha Bio
-</button>
-
-<script>
-function retornarOuIrParaBio() {
-  // Se o usuário veio de 'mez.ink', ele apenas volta (evita nova aba)
-  if (document.referrer.includes('mez.ink')) {
-    window.history.back();
-  } else {
-    // Se veio de outro lugar, abre a bio na mesma aba
-    window.location.href = 'https://mez.ink/chmartinelle';
-  }
+    window.location.href = 'https://mez.ink';
+  }, 100);
 }
 </script>
 
