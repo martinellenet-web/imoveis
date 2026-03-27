@@ -629,18 +629,12 @@ footer{
 <footer>
 
 <button onclick="irParaBio()" class="btn-flutuante-bio">
-    Fechar
+    Ir para Bio
 </button>
 
 <script>
 function irParaBio() {
-  // Tenta fechar a aba (caso tenha sido aberta vindo da Bio)
-  window.location.href = 'https://mez.ink/chmartinelle';
-
-  // Se não fechar, redireciona para a Bio na mesma aba (evita abrir nova)
-  setTimeout(() => {
-    window.location.href = 'https://mez.ink/chmartinelle';
-  }, 100);
+  window.open("https://mez.ink/chmartinelle", '_blank')
 }
 </script>
 
