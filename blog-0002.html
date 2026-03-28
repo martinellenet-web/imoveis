@@ -628,13 +628,27 @@ footer{
 
 <footer>
 
-<button onclick="irParaBio()" class="btn-flutuante-bio">
-    Ir para Bio
+<button onclick="fechar()" class="btn-flutuante-bio">
+    Fechar
 </button>
 
 <script>
-function irParaBio() {
-  window.open("https://mez.ink/chmartinelle", '_blank')
+function fechar() {
+    // Tenta fechar a aba
+    window.close();
+
+    // Pequeno delay para verificar se não fechou
+    setTimeout(function() {
+
+        // Tenta voltar no histórico
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            // Último recurso: redireciona
+            window.location.href = "about:blank";
+        }
+
+    }, 500);
 }
 </script>
 
