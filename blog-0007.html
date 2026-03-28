@@ -628,27 +628,35 @@ footer{
 
 <footer>
 
-<button onclick="irParaBio()" class="botao-share">
+<button onclick="fechar()" class="btn-flutuante-bio">
     Fechar
 </button>
 
 <script>
-function irParaBio() {
-  // Tenta fechar a aba (caso tenha sido aberta vindo da Bio)
-  window.close();
+function fechar() {
+    // Tenta fechar a aba
+    window.close();
 
-  // Se não fechar, redireciona para a Bio na mesma aba (evita abrir nova)
-  setTimeout(() => {
-    window.location.href = 'https://mez.ink/chmartinelle';
-  }, 100);
+    // Pequeno delay para verificar se não fechou
+    setTimeout(function() {
+
+        // Tenta voltar no histórico
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            // Último recurso: redireciona
+            window.location.href = "about:blank";
+        }
+
+    }, 500);
 }
 </script>
 
 <br>
 <br>
 
-<div style="text-align: center; margin-top: 10px; padding: 5px;">
-    <a href="https://mez.ink/chmartinelle" 
+<div style="text-align: left; margin-top: 10px; padding: 5px;">
+    <a
        target="_blank" 
        style="font-family: 'Inter', sans-serif; 
               font-size: 13px; 
@@ -656,13 +664,13 @@ function irParaBio() {
               text-decoration: none; 
               letter-spacing: 0.5px;
               opacity: 0.8;">
-        mez.ink/chmartinelle
+        @chmartinelle
     </a>
 </div>
 
 
 
-</footer>   
+</footer>    
 
 <script>
   document.querySelectorAll('.faq-question').forEach(question => {
