@@ -629,28 +629,16 @@ footer{
 <footer>
 
 <button onclick="fechar()" class="btn-flutuante-bio">
-    Fechar
+    Sair
 </button>
 
 <script>
 function fechar() {
-    // Tenta fechar a aba
-    window.close();
-
-    // Pequeno delay para verificar se não fechou
-    setTimeout(function() {
-
-        // Tenta voltar no histórico
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            // Último recurso: redireciona
-            window.location.href = "about:blank";
-        }
-
-    }, 500);
+    // Redireciona imediatamente para a sua página de agradecimento (index)
+    window.location.href = "https://blog.martinelle.workers.dev/";
 }
-</script>
+</script>   
+
 
 <br>
 <br>
