@@ -49,6 +49,38 @@
     </style>
 </head>
 <body>
+
+<form action="https://formspree.io/f/xojpgyjy" method="POST">
+  <p>Como você avalia o conteúdo?</p>
+  
+  <!-- Campo de classificação por estrelas -->
+  <div style="font-size: 30px; color: gold; margin: 10px 0;">
+    <input type="radio" id="star5" name="rating" value="5" required />
+    <label for="star5" style="cursor: pointer;">★</label>
+    
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4" style="cursor: pointer;">★</label>
+    
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3" style="cursor: pointer;">★</label>
+    
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2" style="cursor: pointer;">★</label>
+    
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1" style="cursor: pointer;">★</label>
+  </div>
+
+  <label for="message">Deixe sua mensagem (opcional):</label>
+  <textarea id="message" name="message" rows="4" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
+
+  <button type="submit" style="background-color: #007cba; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+    Enviar
+  </button>
+</form>   
+
+<hr>
+
     <div class="container">
         <h1>Obrigado por visitar o link!</h1>
         <p>Sua visita é muito importante para mim.</p>
