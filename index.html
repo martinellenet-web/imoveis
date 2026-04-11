@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obrigado pela Leitura!</title>
+    <title>Avalie o Conteúdo</title>
     <style>
         body {
             font-family: 'Playfair Display', 'Inter', sans-serif;
@@ -43,49 +43,94 @@
             background-color: #000000;
             color: white;
         }
-        .btn-fechar:hover, .btn-bio:hover {
-            opacity: 0.9;
+        .form-group {
+            margin: 15px 0;
+        }
+        .stars {
+            font-size: 30px;
+            color: gold;
+        }
+        .stars input {
+            display: none;
+        }
+        .stars label {
+            cursor: pointer;
+        }
+        #form-section, #thank-you-section {
+            transition: opacity 0.5s ease;
+        }
+        #thank-you-section {
+            display: none;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
+    <!-- Seção do Formulário -->
+    <div id="form-section" class="container">
+        <form id="feedback-form">
+            <p>Como você avalia o conteúdo?</p>
+            <div class="stars form-group">
+                <input type="radio" id="star5" name="rating" value="5" required>
+                <label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">★</label>
+            </div>
 
-<form action="https://formspree.io/f/xojpgyjy" method="POST">
-  <p>Como você avalia o conteúdo?</p>
-  
-  <!-- Campo de classificação por estrelas -->
-  <div style="font-size: 30px; color: gold; margin: 10px 0;">
-    <input type="radio" id="star5" name="rating" value="5" required />
-    <label for="star5" style="cursor: pointer;">★</label>
-    
-    <input type="radio" id="star4" name="rating" value="4" />
-    <label for="star4" style="cursor: pointer;">★</label>
-    
-    <input type="radio" id="star3" name="rating" value="3" />
-    <label for="star3" style="cursor: pointer;">★</label>
-    
-    <input type="radio" id="star2" name="rating" value="2" />
-    <label for="star2" style="cursor: pointer;">★</label>
-    
-    <input type="radio" id="star1" name="rating" value="1" />
-    <label for="star1" style="cursor: pointer;">★</label>
-  </div>
+            <div class="form-group">
+                <label for="message">Deixe sua mensagem (opcional):</label>
+                <textarea id="message" name="message" rows="4" style="width: 100%; padding: 8px;"></textarea>
+            </div>
 
-  <label for="message">Deixe sua mensagem (opcional):</label>
-  <textarea id="message" name="message" rows="4" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
+            <button type="submit" style="background-color: #007cba; color: white; padding: 10px 20px; border: none;">
+                Enviar
+            </button>
+        </form>
+    </div>
 
-  <button type="submit" style="background-color: #007cba; color: white; padding: 10px 20px; border: none; cursor: pointer;">
-    Enviar
-  </button>
-</form>   
-
-<br>
-
-    <div class="container">
-        <h1>Obrigado por visitar o link!</h1>
-        <p>Sua visita é muito importante para mim.</p>
-        <a href="#" class="btn btn-fechar" onclick="window.close(); return false;">Fechar esta pagina</a>
+    <!-- Seção de Agradecimento (oculta inicialmente) -->
+    <div id="thank-you-section" class="container">
+        <h1>Obrigado pela avaliação!</h1>
+        <p>Sua opinião é muito importante para mim.</p>
+        <a href="#" class="btn btn-fechar" onclick="window.close(); return false;">Fechar esta página</a>
         <a href="https://bio.site/chmartinelle" class="btn btn-bio" target="_blank">Abrir Links da BIO</a>
     </div>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o envio padrão
+
+            // Envia os dados para o Formspree
+            fetch('https://formspree.io/f/xojpgyjy', {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Oculta o formulário e mostra a mensagem de agradecimento
+                    document.getElementById('form-section').style.opacity = 0;
+                    setTimeout(() => {
+                        document.getElementById('form-section').style.display = 'none';
+                        document.getElementById('thank-you-section').style.display = 'block';
+                        setTimeout(() => {
+                            document.getElementById('thank-you-section').style.opacity = 1;
+                        }, 10);
+                    }, 500);
+                } else {
+                    alert('Ocorreu um erro. Tente novamente.');
+                }
+            }).catch(() => {
+                alert('Ocorreu um erro. Tente novamente.');
+            });
+        });
+    </script>
 </body>
 </html>   
