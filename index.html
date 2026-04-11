@@ -139,9 +139,15 @@
         });
 
         function fecharAvaliacao() {
-            // Redireciona para a página da BIO ou outra URL desejada
-            window.location.href = "https://bio.site/chmartinelle";
-        }
+    document.getElementById('form-section').style.opacity = 0;
+    setTimeout(() => {
+        document.getElementById('form-section').style.display = 'none';
+        document.getElementById('thank-you-section').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('thank-you-section').style.opacity = 1;
+        }, 10);
+    }, 500);
+}   
     </script>
 </body>
 </html>   
