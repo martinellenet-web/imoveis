@@ -6,16 +6,17 @@
     <title>Avaliação</title>
     <style>
     
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    filter: none !important;
-}   
+   body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100dvh; /* Use min-height e dvh */
+        margin: 0;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); /* Evita corte nas laterais */
+        filter: none !important;
+    }
 
 textarea {
     width: 100% !important;
