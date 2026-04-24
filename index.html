@@ -85,15 +85,30 @@ textarea {
         }
         
         
-                /* Estilo da barra de progresso */
+      /* Container principal da linha */
+        .progress-line {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            margin: 15px 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Estilo do rótulo "Leitura:" */
+        .progress-label {
+            margin-right: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        /* Estilo da barra de progresso */
         .progress-container {
-            width: 100%;
+            flex: 1;
             height: 20px;
             background-color: #e0e0e0;
             border-radius: 10px;
             overflow: hidden;
+            margin: 0 10px;
             position: relative;
-            margin: 10px 0;
         }
         .progress-bar {
             height: 100%;
@@ -102,15 +117,11 @@ textarea {
             border-radius: 10px;
             transition: width 0.5s ease;
         }
+        /* Estilo do número e símbolo de percentual */
         .progress-percent {
-            position: absolute;
-            top: -25px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
+            margin-left: 10px;
             font-weight: bold;
-            color: #333;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -148,11 +159,14 @@ textarea {
           <hr style="margin: 8px 0; border: 0.5px solid #e0e0e0;">
           
               
-       <!-- Container da barra de progresso -->
-    <div class="progress-container">
-        <div class="progress-bar" id="bar"></div>
-        <div class="progress-percent" id="percent">0%</div>
+    <!-- Linha completa com label, barra e percentual -->
+    <div class="progress-line">
+        <span class="progress-label">Leitura:</span>
+        <div class="progress-container">
+            <div class="progress-bar" id="bar"></div>
         </div>
+        <span class="progress-percent" id="percent">0%</span>
+    </div>
 
           
   </div></div>
@@ -175,7 +189,7 @@ textarea {
 </div> <!-- Fim do thank-you-section -->   
 
 
-  <script>
+     <script>
         // Função para atualizar a barra de progresso
         function atualizarBarra(percentual) {
             const bar = document.getElementById('bar');
@@ -184,7 +198,7 @@ textarea {
             percent.textContent = percentual + '%';
         }
 
-        // Define o percentual inicial (altere este valor conforme necessário)
+        // Define o percentual (altere este valor conforme necessário)
         atualizarBarra(75); // Exemplo: 75%
     </script>
 
