@@ -83,6 +83,35 @@ textarea {
             display: none;
             opacity: 0;
         }
+        
+        
+                /* Estilo da barra de progresso */
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        .progress-percent {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 </head>
 
@@ -92,6 +121,20 @@ textarea {
 
 <div id="thank-you-section" class="container" style="display: block; opacity: 1; font-family: Arial, sans-serif;">
 <br><br><br><br>
+
+   <!-- Container da barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="bar"></div>
+        <div class="progress-percent" id="percent">0%</div>
+    
+
+    <!-- Textos (direita, com ênfase na citação) -->
+    <div style="flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: center; font-size: 13px; overflow: hidden;">
+        <hr style="margin: 8px 0; border: 0.5px solid #e0e0e0;">
+        <span style="font-style: italic; font-size: 14px; line-height: 1.4; color: #222; flex: 1;">"Há urgência em buscar, enquanto ainda é possível encontrar, aquilo que é humano."</span>
+        <hr style="margin: 8px 0; border: 0.5px solid #e0e0e0;">
+   </div>
+
   <!-- WIDGET DE LEITURA DENTRO DO CONTAINER -->
 <div style="width: 100%; min-height: 180px; border: 1px solid #ddd; border-radius: 0px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; background-color: white; box-sizing: border-box;">     
   <!-- Conteúdo do widget (capa e texto) -->
@@ -107,7 +150,7 @@ textarea {
     <span style="font-style: italic; font-size: 14px; line-height: 1.4; color: #222; flex: 1;">"Há urgência em buscar, enquanto ainda é possível encontrar, aquilo que é humano."</span>
           <hr style="margin: 8px 0; border: 0.5px solid #e0e0e0;">
           
-  </div></div>
+  </div></div></div>
   
 <br><br>
   <!-- SEU WIDGET DE AVALIAÇÃO -->
@@ -125,6 +168,21 @@ textarea {
   </div>   
 
 </div> <!-- Fim do thank-you-section -->   
+
+
+  <script>
+        // Função para atualizar a barra de progresso
+        function atualizarBarra(percentual) {
+            const bar = document.getElementById('bar');
+            const percent = document.getElementById('percent');
+            bar.style.width = percentual + '%';
+            percent.textContent = percentual + '%';
+        }
+
+        // Define o percentual inicial (altere este valor conforme necessário)
+        atualizarBarra(75); // Exemplo: 75%
+    </script>
+
 
 </body>
 </html>   
