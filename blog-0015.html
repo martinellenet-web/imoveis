@@ -574,20 +574,27 @@ footer{
 </section>
 
 <section>
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100%; margin: 0; padding: 0;">
-  <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" alt="Imagem centralizada" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+<div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+  <!-- Imagem à esquerda -->
+  <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" 
+       alt="Imagem do livro" 
+       style="width: 150px; height: auto; border-radius: 8px;" />
 
-<br>
-    <span style="color: #FF6719; font-size: 18px;">★★★★☆ </span>
-      <!-- Linha completa com label, barra e percentual -->
-    <br> 
-    <div class="progress-line">
-        <span class="progress-label">Leitura:</span>
-        <div class="progress-container">
-            <div class="progress-bar" id="bar"></div>
-        </div>
-        <span class="progress-percent" id="percent">0%</span>
-    </div> </div>
+  <!-- Conteúdo à direita -->
+  <div style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
+    <span style="color: #FF6719; font-size: 24px;">★★★★☆</span>
+    
+    <div class="progress-line" style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+      <span class="progress-label">Leitura:</span>
+      <div class="progress-container" 
+           style="flex: 1; background-color: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
+        <div class="progress-bar" id="bar" 
+             style="height: 100%; width: 0%; background-color: #FF6719;"></div>
+      </div>
+      <span class="progress-percent" id="percent">0%</span>
+    </div>
+  </div>
+</div>   
     
             <script>
         // Função para atualizar a barra de progresso
