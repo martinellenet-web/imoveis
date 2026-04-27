@@ -198,7 +198,141 @@ textarea {
         // Define o percentual (altere este valor conforme necessário)
         atualizarBarra(10); // Exemplo: 75%
     </script>
+<style>
+    .nota-estilizada {
+        margin: 0 auto 100px auto; /* 100px de margem no final para o botão/respiro */
+        padding: 25px;
+        max-width: 800px; /* Alinhado com a largura da sua imagem/vídeo */
+        
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 19px;
+        line-height: 1.7;
+        color: #333;
+        
+        background-color: #fff;
+        border-radius: 8px;
+        word-wrap: break-word;
+    }
 
+    /* Estilos para elementos do Obsidian (Markdown) */
+    .nota-estilizada h1, .nota-estilizada h2, .nota-estilizada h3 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: #000;
+    }
+    
+    .nota-estilizada p {
+        margin-bottom: 1.2em;
+    }
+
+    .nota-estilizada ul, .nota-estilizada ol {
+        margin-bottom: 1.2em;
+        padding-left: 25px;
+    }
+
+    .nota-estilizada img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 600px) {
+        .nota-estilizada {
+            font-size: 17px;
+            padding: 15px;
+        }
+    }
+</style>
+
+
+<script>
+    const arquivoNota = 'blog-0015.md?v=' + Date.now();
+
+function conversorMarkdownLite(texto) {
+    return texto
+        // Títulos
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+
+        // Negrito
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+
+        // Itálico
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+
+        // Links
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color:#007bff;text-decoration:none;">$1</a>')
+
+        // Listas
+        .replace(/^\s*[-*]\s+(.*)$/gim, '<li style="margin-left:20px;">$1</li>')
+
+        // 🔥 IMPORTANTE: não quebrar HTML
+        .replace(/\n{2,}/g, '<br><br>');
+}
+
+    fetch(arquivoNota)
+        .then(response => {
+            if (!response.ok) throw new Error('Arquivo não encontrado');
+            return response.text();
+        })
+        .then(texto => {
+            // Aplica o conversor direto no texto recebido
+            document.getElementById('conteudo-nota').innerHTML = conversorMarkdownLite(texto);
+        })
+        .catch(err => {
+            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+            console.error(err);
+        });
+</script>
+
+</section>
+
+
+
+
+
+<footer>
+
+<button onclick="fechar()" class="btn-flutuante-bio">
+    Sair
+</button>
+
+<script>
+function fechar() {
+    // Redireciona imediatamente para a sua página de agradecimento (index)
+    window.location.href = "https://blog.martinelle.workers.dev/";
+}
+</script>   
+
+<br>
+<br>
+
+<div style="text-align: left; margin-top: 10px; padding: 5px;">
+    <a
+       target="_blank" 
+       style="font-family: 'Inter', sans-serif; 
+              font-size: 13px; 
+              color: #666666; 
+              text-decoration: none; 
+              letter-spacing: 0.5px;
+              opacity: 0.8;">
+        chmartinelle
+    </a>
+</div>
+
+
+
+</footer>   
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+</script>   
 
 </body>
 </html>   
