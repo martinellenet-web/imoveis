@@ -536,6 +536,34 @@ footer{
   <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" alt="Imagem centralizada" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
 </div>
 
+    <span style="color: #FF6719; font-size: 18px;">★★★★☆ </span>
+      <!-- Linha completa com label, barra e percentual -->
+     
+    <div class="progress-line">
+        <span class="progress-label">Leitura:</span>
+        <div class="progress-container">
+            <div class="progress-bar" id="bar"></div>
+        </div>
+        <span class="progress-percent" id="percent">0%</span>
+    </div> 
+    
+    
+         <script>
+        // Função para atualizar a barra de progresso
+        function atualizarBarra(percentual) {
+            const bar = document.getElementById('bar');
+            const percent = document.getElementById('percent');
+            bar.style.width = percentual + '%';
+            percent.textContent = percentual + '%';
+        }
+
+        // Define o percentual (altere este valor conforme necessário)
+        atualizarBarra(10); // Exemplo: 75%
+    </script>
+    
+    
+    
+    
 
 <section>
 
