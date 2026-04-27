@@ -573,44 +573,35 @@ footer{
 </div>
 </section>
 
-<section>
-<div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-  <!-- Imagem à esquerda -->
+<section style="padding: 20px; text-align: center;">
+  <!-- Imagem no topo -->
   <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" 
-       alt="Imagem do livro" 
-       style="width: 150px; height: auto; border-radius: 8px;" />
+       alt="Capa do livro" 
+       style="width: 150px; border-radius: 8px; margin-bottom: 15px;" />
 
-  <!-- Conteúdo à direita -->
-  <div style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
-    <span style="color: #FF6719; font-size: 24px;">★★★★☆</span>
-    
-    <div class="progress-line" style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
-      <span class="progress-label">Leitura:</span>
-      <div class="progress-container" 
-           style="flex: 1; background-color: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
-        <div class="progress-bar" id="bar" 
-             style="height: 100%; width: 0%; background-color: #FF6719;"></div>
-      </div>
-      <span class="progress-percent" id="percent">0%</span>
-    </div>
+  <!-- Estrelas -->
+  <span style="color: #FF6719; font-size: 24px;">★★★★☆</span>
+
+  <!-- Barra de progresso -->
+  <div style="margin: 15px auto; width: 80%; background-color: #e0e0e0; border-radius: 4px; height: 10px;">
+    <div class="progress-bar" id="bar" 
+         style="height: 100%; width: 0%; background-color: #FF6719; border-radius: 4px; transition: width 0.3s;"></div>
   </div>
-</div>   
-    
-            <script>
-        // Função para atualizar a barra de progresso
-        function atualizarBarra(percentual) {
-            const bar = document.getElementById('bar');
-            const percent = document.getElementById('percent');
-            bar.style.width = percentual + '%';
-            percent.textContent = percentual + '%';
-        }
 
-        // Define o percentual (altere este valor conforme necessário)
-        atualizarBarra(10); // Exemplo: 75%
-    </script>
-    
-       
+  <!-- Percentual -->
+  <span id="percent" style="font-size: 14px; color: #555;">0%</span>
 </section>
+
+<script>
+  function atualizarBarra(percentual) {
+    const bar = document.getElementById('bar');
+    const percent = document.getElementById('percent');
+    bar.style.width = percentual + '%';
+    percent.textContent = percentual + '%';
+  }
+  atualizarBarra(10); // Define o progresso (ex: 10%)
+</script>   
+       
 
 
 <section>
