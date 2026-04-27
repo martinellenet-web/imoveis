@@ -576,141 +576,116 @@ footer{
 
 
 <section style="padding: 20px;">
-  <!-- Contêiner com largura da imagem -->
-  <div style="max-width: 300px; margin: 0 auto;">
-  <h1>Minha leitura atual:</h1>
-<h3>Na medida em que a leitura avança a classificação pode alterar</3>
-
+  <!-- Contêiner principal com mesma largura do conteúdo abaixo -->
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
     
     <!-- Imagem responsiva -->
     <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" 
          alt="Capa do livro" 
-         style="width: 100%; max-width: 100%; height: auto; border-radius: 8px;" />
+         style="width: 100%; max-width: 300px; height: auto; border-radius: 8px;" />
 
     <!-- Estrelas -->
-    <div style="text-align: center; margin: 10px 0; color: #FF6719; font-size: 24px;">
+    <div style="margin: 15px 0; color: #FF6719; font-size: 24px;">
       ★★★★☆
     </div>
 
-    <!-- Barra de progresso com mesma largura da imagem -->
-    <div style="background-color: #e0e0e0; border-radius: 4px; height: 10px; margin: 10px 0;">
-      <div class="progress-bar" id="bar" 
-           style="height: 100%; width: 0%; background-color: #FF6719; border-radius: 4px; transition: width 0.3s;"></div>
-    </div>
-
-    <!-- Percentual -->
-    <div style="text-align: center; font-size: 14px; color: #555;">
-      <span id="percent">0%</span>
+    <!-- Barra de progresso alinhada com a largura máxima da imagem -->
+    <div style="display: flex; align-items: center; gap: 10px; justify-content: center; margin: 10px 0;">
+      <span style="font-size: 14px; color: #555;">Leitura:</span>
+      <div style="flex: 1; max-width: 200px; background-color: #e0e0e0; border-radius: 4px; height: 10px;">
+        <div class="progress-bar" id="bar" 
+             style="height: 100%; width: 0%; background-color: #FF6719; border-radius: 4px; transition: width 0.3s;"></div>
+      </div>
+      <span id="percent" style="font-size: 14px; color: #555;">0%</span>
     </div>
   </div>
 </section>
 
-<script>
-  function atualizarBarra(percentual) {
-    const bar = document.getElementById('bar');
-    const percent = document.getElementById('percent');
-    bar.style.width = percentual + '%';
-    percent.textContent = percentual + '%';
-  }
-  atualizarBarra(10); // Ajuste conforme necessário
-</script>   
-
+<!-- Seção existente do conteúdo carregado via Markdown -->
 <section>
+  <div id="conteudo-nota" class="nota-estilizada">Carregando nota...</div>
 
-
-<div id="conteudo-nota" class="nota-estilizada">Carregando nota...</div>
-
-
-<style>
+  <style>
     .nota-estilizada {
-        margin: 0 auto 100px auto; /* 100px de margem no final para o botão/respiro */
-        padding: 25px;
-        max-width: 800px; /* Alinhado com a largura da sua imagem/vídeo */
-        
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        font-size: 19px;
-        line-height: 1.7;
-        color: #333;
-        
-        background-color: #fff;
-        border-radius: 8px;
-        word-wrap: break-word;
+      margin: 0 auto 100px auto;
+      padding: 25px;
+      max-width: 800px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 19px;
+      line-height: 1.7;
+      color: #333;
+      background-color: #fff;
+      border-radius: 8px;
+      word-wrap: break-word;
     }
 
-    /* Estilos para elementos do Obsidian (Markdown) */
     .nota-estilizada h1, .nota-estilizada h2, .nota-estilizada h3 {
-        margin-top: 1.5em;
-        margin-bottom: 0.5em;
-        color: #000;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      color: #000;
     }
     
     .nota-estilizada p {
-        margin-bottom: 1.2em;
+      margin-bottom: 1.2em;
     }
 
     .nota-estilizada ul, .nota-estilizada ol {
-        margin-bottom: 1.2em;
-        padding-left: 25px;
+      margin-bottom: 1.2em;
+      padding-left: 25px;
     }
 
     .nota-estilizada img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
 
     @media (max-width: 600px) {
-        .nota-estilizada {
-            font-size: 17px;
-            padding: 15px;
-        }
+      .nota-estilizada {
+        font-size: 17px;
+        padding: 15px;
+      }
     }
-</style>
+  </style>
 
-
-<script>
+  <script>
     const arquivoNota = 'blog-0015.md?v=' + Date.now();
 
-function conversorMarkdownLite(texto) {
-    return texto
-        // Títulos
+    function conversorMarkdownLite(texto) {
+      return texto
         .replace(/^### (.*$)/gim, '<h3>$1</h3>')
         .replace(/^## (.*$)/gim, '<h2>$1</h2>')
         .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-
-        // Negrito
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-
-        // Itálico
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
-
-        // Links
         .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color:#007bff;text-decoration:none;">$1</a>')
-
-        // Listas
         .replace(/^\s*[-*]\s+(.*)$/gim, '<li style="margin-left:20px;">$1</li>')
-
-        // 🔥 IMPORTANTE: não quebrar HTML
         .replace(/\n{2,}/g, '<br><br>');
-}
+    }
 
     fetch(arquivoNota)
-        .then(response => {
-            if (!response.ok) throw new Error('Arquivo não encontrado');
-            return response.text();
-        })
-        .then(texto => {
-            // Aplica o conversor direto no texto recebido
-            document.getElementById('conteudo-nota').innerHTML = conversorMarkdownLite(texto);
-        })
-        .catch(err => {
-            document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
-            console.error(err);
-        });
-</script>
+      .then(response => {
+        if (!response.ok) throw new Error('Arquivo não encontrado');
+        return response.text();
+      })
+      .then(texto => {
+        document.getElementById('conteudo-nota').innerHTML = conversorMarkdownLite(texto);
+      })
+      .catch(err => {
+        document.getElementById('conteudo-nota').innerHTML = "Erro ao carregar o conteúdo.";
+        console.error(err);
+      });
 
-</section>
-
+    // Atualiza a barra de progresso
+    function atualizarBarra(percentual) {
+      const bar = document.getElementById('bar');
+      const percent = document.getElementById('percent');
+      bar.style.width = percentual + '%';
+      percent.textContent = percentual + '%';
+    }
+    atualizarBarra(10); // Ajuste conforme necessário
+  </script>
+</section>   
  
 
     
