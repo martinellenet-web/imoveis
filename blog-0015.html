@@ -562,13 +562,6 @@ footer{
             white-space: nowrap;
         }
         
-        img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}   
-
-
 
 
 </style>
@@ -596,7 +589,19 @@ footer{
         <span class="progress-percent" id="percent">0%</span>
     </div> </div>
     
-   
+            <script>
+        // Função para atualizar a barra de progresso
+        function atualizarBarra(percentual) {
+            const bar = document.getElementById('bar');
+            const percent = document.getElementById('percent');
+            bar.style.width = percentual + '%';
+            percent.textContent = percentual + '%';
+        }
+
+        // Define o percentual (altere este valor conforme necessário)
+        atualizarBarra(10); // Exemplo: 75%
+    </script>
+    
     
     
 
@@ -697,19 +702,7 @@ function conversorMarkdownLite(texto) {
 </section>
 
  
-         <script>
-        // Função para atualizar a barra de progresso
-        function atualizarBarra(percentual) {
-            const bar = document.getElementById('bar');
-            const percent = document.getElementById('percent');
-            bar.style.width = percentual + '%';
-            percent.textContent = percentual + '%';
-        }
 
-        // Define o percentual (altere este valor conforme necessário)
-        atualizarBarra(10); // Exemplo: 75%
-    </script>
-    
     
 
 
