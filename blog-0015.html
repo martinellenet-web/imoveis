@@ -573,23 +573,31 @@ footer{
 </div>
 </section>
 
-<section style="padding: 20px; text-align: center;">
-  <!-- Imagem no topo -->
-  <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" 
-       alt="Capa do livro" 
-       style="width: 150px; border-radius: 8px; margin-bottom: 15px;" />
+<section style="padding: 20px;">
+  <!-- Contêiner com largura da imagem -->
+  <div style="max-width: 300px; margin: 0 auto;">
+    
+    <!-- Imagem responsiva -->
+    <img src="https://blog.martinelle.workers.dev/memorias-post.jpeg" 
+         alt="Capa do livro" 
+         style="width: 100%; max-width: 100%; height: auto; border-radius: 8px;" />
 
-  <!-- Estrelas -->
-  <span style="color: #FF6719; font-size: 24px;">★★★★☆</span>
+    <!-- Estrelas -->
+    <div style="text-align: center; margin: 10px 0; color: #FF6719; font-size: 24px;">
+      ★★★★☆
+    </div>
 
-  <!-- Barra de progresso -->
-  <div style="margin: 15px auto; width: 80%; background-color: #e0e0e0; border-radius: 4px; height: 10px;">
-    <div class="progress-bar" id="bar" 
-         style="height: 100%; width: 0%; background-color: #FF6719; border-radius: 4px; transition: width 0.3s;"></div>
+    <!-- Barra de progresso com mesma largura da imagem -->
+    <div style="background-color: #e0e0e0; border-radius: 4px; height: 10px; margin: 10px 0;">
+      <div class="progress-bar" id="bar" 
+           style="height: 100%; width: 0%; background-color: #FF6719; border-radius: 4px; transition: width 0.3s;"></div>
+    </div>
+
+    <!-- Percentual -->
+    <div style="text-align: center; font-size: 14px; color: #555;">
+      <span id="percent">0%</span>
+    </div>
   </div>
-
-  <!-- Percentual -->
-  <span id="percent" style="font-size: 14px; color: #555;">0%</span>
 </section>
 
 <script>
@@ -599,10 +607,8 @@ footer{
     bar.style.width = percentual + '%';
     percent.textContent = percentual + '%';
   }
-  atualizarBarra(10); // Define o progresso (ex: 10%)
+  atualizarBarra(10); // Ajuste conforme necessário
 </script>   
-       
-
 
 <section>
 
